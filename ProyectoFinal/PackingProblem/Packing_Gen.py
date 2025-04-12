@@ -1,6 +1,5 @@
 import json
 
-import numpy as np
 import matplotlib.pyplot as plt
 import random
 
@@ -17,25 +16,26 @@ random.seed(SEED)
 
 # Función para generar figuras aleatorias
 def generate_figures(num_objects, max_width, max_height):
-    figures = []
+    _figures = []
     for _ in range(num_objects):
         shape_type = random.choice(['rectangle', 'triangle'])
         x = random.uniform(0, CONTAINER_WIDTH)
         y = random.uniform(0, CONTAINER_HEIGHT)
+        priority = random.randint(0, 10)
 
         if shape_type == 'rectangle':
             width = random.uniform(1, max_width)
             height = random.uniform(1, max_height)
-            rect = Rectangle(x, y, width, height)
-            figures.append(rect)
+            rect = Rectangle(x, y, priority, width, height)
+            _figures.append(rect)
 
         elif shape_type == 'triangle':
             base = random.uniform(1, max_width)
             height = random.uniform(1, max_height)
-            tri = Triangle(x, y, base, height)
-            figures.append(tri)
+            tri = Triangle(x, y, priority, base, height)
+            _figures.append(tri)
 
-    return figures
+    return _figures
 
 
 # Visualización de figuras en el contenedor
@@ -64,9 +64,9 @@ def visualize(_figures, container_width, container_height, title="Packing Proble
     plt.gca().invert_yaxis()  # Invertir el eje Y para que (0, 0) esté en la esquina inferior izquierda
     plt.show()
 
-
+n_size = 10
 # Guardar las figuras como JSON
-def save_to_json(figures, filename="50Figures.json"):
+def save_to_json(figures, filename=f"{n_size}Figures.json"):
     figures_data = []
     for fig in figures:
         figures_data.append(fig.data())
@@ -76,9 +76,9 @@ def save_to_json(figures, filename="50Figures.json"):
 
 
 # Generar figuras y visualizar
-figures = generate_figures(num_objects=50, max_width=3, max_height=3)
+figures = generate_figures(num_objects=n_size, max_width=3, max_height=3)
 visualize(figures, CONTAINER_WIDTH, CONTAINER_HEIGHT, title="Packing Problem Example")
 
 # Guardar las figuras en un archivo JSON
 save_to_json(figures)
-print("Figuras guardadas en '10Figures.json'")
+print(f"Figuras guardadas en '{10}Figures.json'")

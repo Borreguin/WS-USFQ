@@ -1,9 +1,10 @@
 
 # Clase base para figuras geométricas
 class Figure:
-    def __init__(self, x, y):
+    def __init__(self, x, y, priority):
         self.x = x  # Coordenada x
         self.y = y  # Coordenada y
+        self.priority = priority  # La prioridad 0 es la más alta
 
     def is_overlapping(self, other):
         """ Método que debe ser implementado por subclases."""
@@ -13,14 +14,15 @@ class Figure:
         """ Devuelve los datos de la figura."""
         return {
             'x': self.x,
-            'y': self.y
+            'y': self.y,
+            'priority': self.priority
         }
 
 
 # Clase para rectángulos
 class Rectangle(Figure):
-    def __init__(self, x, y, width, height):
-        super().__init__(x, y)
+    def __init__(self, x, y, priority, width, height):
+        super().__init__(x, y, priority)
         self.width = width
         self.height = height
 
@@ -42,13 +44,13 @@ class Rectangle(Figure):
 
     def data(self):
         """ Devuelve los datos del rectángulo."""
-        return {
+        _data = super().data()
+        _data.update({
             'type': 'rectangle',
-            'x': self.x,
-            'y': self.y,
             'width': self.width,
             'height': self.height
-        }
+        })
+        return _data
 
     def __repr__(self):
         return f"Rectangle(x={self.x}, y={self.y}, width={self.width}, height={self.height})"
@@ -64,8 +66,8 @@ def get_min_max_values(vertices):
 
 
 class Triangle(Figure):
-    def __init__(self, x, y, base, height):
-        super().__init__(x, y)
+    def __init__(self, x, y, priority, base, height):
+        super().__init__(x, y, priority)
         self.base = base
         self.height = height
         # Calcular vértices a partir de la base y altura
@@ -107,14 +109,14 @@ class Triangle(Figure):
 
     def data(self):
         """ Devuelve los datos del triángulo."""
-        return {
+        _data = super().data()
+        _data.update({
             'type': 'triangle',
-            'x': self.x,
-            'y': self.y,
             'base': self.base,
             'height': self.height,
             'vertices': self.vertices
-        }
+        })
+        return _data
 
     def __repr__(self):
         return f"Triangle(vertices={self.vertices})"
