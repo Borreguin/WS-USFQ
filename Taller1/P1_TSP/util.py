@@ -4,16 +4,15 @@ import math
 
 from matplotlib import pyplot as plt
 
-random.seed(123) # This fixes the seed for reproducibility
-
-def generar_ciudades(n_cities: int):
-    ciudades = {}
+def generar_ciudades(n_cities: int, seed: int = 123):
+    random.seed(seed)  # This fixes the seed for reproducibility
+    cities = {}
     for i in range(n_cities):
         ciudad = f"{random.choice(string.ascii_uppercase)}{random.randint(0,9)}"
         x = round(random.uniform(-100, 100) ,1) # Coordenada x aleatoria entre -100 y 100
         y = round(random.uniform(-100, 100), 1)  # Coordenada y aleatoria entre -100 y 100
-        ciudades[ciudad] = (x, y)
-    return ciudades
+        cities[ciudad] = (x, y)
+    return cities
 
 def calcular_distancia(ciudad1, ciudad2):
     x1, y1 = ciudad1

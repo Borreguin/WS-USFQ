@@ -30,7 +30,7 @@ def study_case_2():
     tsp = TSP(ciudades, distancias)
     ruta = ciudades.keys()
     # ruta = tsp.encontrar_la_ruta_mas_corta()
-    tsp.plotear_resultado(ruta, False)
+    tsp.plotear_resultado(ruta, True)
 
 
 if __name__ == "__main__":
