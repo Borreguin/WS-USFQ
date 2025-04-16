@@ -2,7 +2,7 @@
 # WorkShop-USFQ
 ## Inteligencia artificial
 
-- **Nombre del grupo**: Grupo #
+- **Nombre del grupo**: Grupo # 3!
 - **Integrantes del grupo**:
 
     • Mario Paulo Salgado
