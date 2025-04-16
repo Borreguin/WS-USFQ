@@ -5,7 +5,7 @@
 - **Nombre del grupo**: Grupo #
 - **Integrantes del grupo**:
 
-    • xxxxx
+    • Santiago Rodriguez
 
     • xxxxx
 
