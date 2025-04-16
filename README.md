@@ -5,11 +5,11 @@
 - **Nombre del grupo**: Grupo #
 - **Integrantes del grupo**:
 
-    • xxxxx
+    • Carla Parra
 
-    • xxxxx
+    • Josue Paredes
 
-    • xxxxx
+    • Aurora Ñacato
 
 ### Resumen
 - [Taller 1](/Taller1/README.md)
