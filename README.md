@@ -5,11 +5,11 @@
 - **Nombre del grupo**: Grupo #
 - **Integrantes del grupo**:
 
-    • xxxxx
+    • Mario Paulo Salgado
 
-    • xxxxx
+    • Gabriela Zumárraga
 
-    • xxxxx
+    • Erika Villagómez
 
 ### Resumen
 - [Taller 1](/Taller1/README.md)
