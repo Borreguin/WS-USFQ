@@ -11,6 +11,8 @@
 
     • Erika Villagómez
 
+    • Guillermo Fernández
+
 ### Resumen
 - [Taller 1](/Taller1/README.md)
   - P1: Descripción 
