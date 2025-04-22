@@ -5,9 +5,9 @@
 - **Nombre del grupo**: Grupo # 2
 - **Integrantes del grupo**:
 
-    • Santiago Rodriguez123
-
     • Daniel Arias
+
+    • Santiago Rodriguez el mas pro
 
     • Andre Ramirez
 
