@@ -16,5 +16,5 @@
 ### Resumen
 - [Taller 1](/Taller1/README.md)
   - P1: Descripción 
-  - P2: Descripción
+  - P2: [ClickUp Plan Project Link](https://app.clickup.com/90131140792/v/l/2ky3r45r-253?pr=90134710547)
 
