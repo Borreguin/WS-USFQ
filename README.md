@@ -5,11 +5,11 @@
 - **Nombre del grupo**: Grupo #
 - **Integrantes del grupo**:
 
-    • Daniel Arias
-
     • xxxxx
 
     • xxxxx
+
+    • Andre Ramirez
 
 ### Resumen
 - [Taller 1](/Taller1/README.md)
