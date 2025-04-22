@@ -2,10 +2,10 @@
 # WorkShop-USFQ
 ## Inteligencia artificial
 
-- **Nombre del grupo**: Grupo #
+- **Nombre del grupo**: Grupo # 2
 - **Integrantes del grupo**:
 
-    • xxxxx
+    • Daniel Arias
 
     • xxxxx
 
