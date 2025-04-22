@@ -1,2 +1,7 @@
 # Hola Compañeros de Ciencia de Datos.
 que mas
+nada quí esperando a que el Daniel indique como trabajar
+git add*
+git commit -m "AC"
+Diablos esto se dede escribir en terminar ...
+avers
