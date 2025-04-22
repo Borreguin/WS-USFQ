@@ -7,7 +7,7 @@
 
     • Daniel Arias
 
-    • Santiago Rodriguez 123 final
+    • Santiago Rodriguez
 
     • Andre Ramirez
 
