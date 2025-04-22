@@ -2,14 +2,14 @@
 # WorkShop-USFQ
 ## Inteligencia artificial
 
-- **Nombre del grupo**: Grupo #
+- **Nombre del grupo**: Grupo # 2
 - **Integrantes del grupo**:
 
     • Santiago Rodriguez
 
-    • Jesús
+    • Daniel Arias
 
-    • xxxxx
+    • Andre Ramirez
 
 ### Resumen
 - [Taller 1](/Taller1/README.md)
