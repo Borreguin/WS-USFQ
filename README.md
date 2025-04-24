@@ -5,11 +5,13 @@
 - **Nombre del grupo**: Grupo #
 - **Integrantes del grupo**:
 
-    • Carla Parra
+    • César Carrera
 
-    • xxxxx
+    • Edgar Guzmán
+    
+    • Byron Vinueza 
 
-    • xxxxx
+    • Juan Sánchez
 
 ### Resumen
 - [Taller 1](/Taller1/README.md)
