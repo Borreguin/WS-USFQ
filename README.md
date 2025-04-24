@@ -15,4 +15,7 @@
 - [Taller 1](/Taller1/README.md)
   - P1: Descripción 
   - P2: Descripción
+Link documento compartido.
+https://docs.google.com/document/d/1XSEfsILf6scYSJ7ZmI3oDSOD6ZN3JXm1sTj9UjIrxLQ/edit?usp=sharing
+
 
