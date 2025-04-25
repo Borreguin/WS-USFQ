@@ -61,3 +61,4 @@ def plotear_ruta(ciudades, ruta, mostrar_anotaciones=True):
     plt.legend()
     plt.grid(True)
     plt.show()
+
