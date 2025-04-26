@@ -210,3 +210,44 @@ def a_star(ciudades, distancias):
     print(f"Tiempo para encontrar la ruta más corta entre {len(ciudades)} ciudades con A*: {elapsed_time:.4f} segundos")
 
     return list(mejor_ruta)
+
+
+def vecinos_cercanos(ciudades, distancias):
+    mejor_ruta = []
+    menor_distancia = 0
+
+    G = nx.Graph()
+    for (ciudad_origen, ciudad_destino), distancia in distancias.items():
+        G.add_edge(ciudad_origen, ciudad_destino, weight=distancia)
+
+    # Lista de ciudades
+    ciudades = list(ciudades.keys())
+    ciudad_actual = ciudades[0]  # Comenzar desde la primera ciudad
+    mejor_ruta.append(ciudad_actual)
+
+    # Medición de tiempo
+    start_time = time.time()
+
+    while len(mejor_ruta) < len(ciudades):
+        # Encontrar la ciudad más cercana no visitada
+        ciudad_mas_cercana = None
+        distancia_mas_corta = math.inf
+        for vecino in G[ciudad_actual]:
+            if vecino not in mejor_ruta and G[ciudad_actual][vecino]['weight'] < distancia_mas_corta:
+                ciudad_mas_cercana = vecino
+                distancia_mas_corta = G[ciudad_actual][vecino]['weight']
+
+        # Agregar la ciudad más cercana a la ruta
+        mejor_ruta.append(ciudad_mas_cercana)
+        menor_distancia += distancia_mas_corta
+        ciudad_actual = ciudad_mas_cercana
+
+    # Volver a la ciudad de origen
+    menor_distancia += G[mejor_ruta[-1]][mejor_ruta[0]]['weight']
+    mejor_ruta.append(mejor_ruta[0])
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Tiempo para encontrar la ruta más corta entre {len(ciudades)} ciudades con Vecinos Cercanos: {elapsed_time:.4f} segundos")
+
+    return mejor_ruta
