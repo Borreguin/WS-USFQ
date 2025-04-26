@@ -21,3 +21,5 @@ Link de ClickUp:
   - P1: Descripción 
   - P2: Descripción
 
+### Conclusiones
+Se decidio por usar grafos dentro de todos los ejercicios ya que estos nos ayudan a entender de mejor manera como se pueden resolver los problemas anteriores. 
