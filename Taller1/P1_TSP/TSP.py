@@ -1,10 +1,21 @@
 from typing import List
-
+import pandas as pd
+import time
 from Taller1.P1_TSP.util import plotear_ruta, generar_ciudades_con_distancias
 from itertools import permutations
 
-
 class TSP:
+    @staticmethod
+    def medir_tiempo(func):
+        def envoltura(*args, **kwargs):
+            inicio = time.time()  # Registro del tiempo inicial
+            resultado = func(*args, **kwargs)  # Ejecución de la función
+            fin = time.time()  # Registro del tiempo final
+            print(f"Tiempo de ejecución de '{func.__name__}': {fin - inicio:.5f} segundos")
+            return resultado  # Retorno del resultado de la función original
+
+        return envoltura
+
     def __init__(self, ciudades, distancias):
         self.ciudades = ciudades
         self.distancias = distancias
@@ -31,6 +42,7 @@ class TSP:
         print(f"Distancia mínima: {distancia_minima}")
         return ruta_optima
 
+    @medir_tiempo
     def _fuerza_bruta(self):
         ciudades = list(self.ciudades.keys())
         mejor_ruta = None
@@ -39,13 +51,7 @@ class TSP:
         # Permutaciones de las ciudades
         #print(self.distancias)
         for perm in permutations(ciudades):
-            #print(perm)
-            distancia_total = 0
-            for i in range(len(perm) - 1):
-
-                distancia_total += self.distancias[(perm[i],perm[i + 1])]
-                #print(f'{perm[i]},{perm[i + 1]}, distancia total= {distancia_total}')
-            distancia_total += self.distancias[(perm[-1],perm[0])]  # Cierre del ciclo
+            distancia_total = self._calcular_distancia_total(perm)
 
             # Actualizar la mejor ruta
             if distancia_total < distancia_minima:
@@ -54,6 +60,7 @@ class TSP:
 
         return list(mejor_ruta), distancia_minima
 
+    @medir_tiempo
     def _vecino_mas_cercano(self):
         ciudades = list(self.ciudades.keys())
         ciudad_actual = ciudades[0]
@@ -74,6 +81,7 @@ class TSP:
         distancia_total += self.distancias[(ruta[-1],ruta[0])]
         return ruta, distancia_total
 
+    @medir_tiempo
     def _heuristica(self):
         import random
         ciudades = list(self.ciudades.keys())
@@ -84,31 +92,47 @@ class TSP:
     def _calcular_distancia_total(self, ruta):
         distancia_total = 0
         for i in range(len(ruta) - 1):
-            distancia_total += self.distancias(ruta[i], ruta[i + 1])
+            distancia_total += self.distancias[(ruta[i], ruta[i + 1])]
         distancia_total += self.distancias[(ruta[-1], ruta[0])]  # Cierre del ciclo
         return distancia_total
 
     def plotear_resultado(self, ruta: List[str], mostrar_anotaciones: bool = True):
         plotear_ruta(self.ciudades, ruta, mostrar_anotaciones)
 
+    @staticmethod
+    def matriz(ruta: List[str]):
+        conexiones=ruta
+        nodos = sorted(set(conexiones))
 
-def study_case_1():
-    n_cities = 51
+        matriz = pd.DataFrame(0,index=nodos,columns =nodos)
+
+        for i in range(len(conexiones)-1):
+            origen = conexiones[i]
+            destino = conexiones[i+1]
+            matriz.loc[origen,destino] = 1
+            matriz.loc[destino,origen] = 1
+        print('Matriz Adyacente')
+        print(matriz)
+
+
+
+
+
+def study_case_1(n_cities = 3):
     ciudades, distancias = generar_ciudades_con_distancias(n_cities)
     tsp = TSP(ciudades, distancias)
     #ruta = ciudades.keys()
     ruta = tsp.encontrar_la_ruta_mas_corta()
     tsp.plotear_resultado(ruta)
+    tsp.matriz(ruta)
 
-def study_case_2():
-    n_cities = 100
-    ciudades, distancias = generar_ciudades_con_distancias(n_cities)
-    tsp = TSP(ciudades, distancias)
-    ruta = ciudades.keys()
-    # ruta = tsp.encontrar_la_ruta_mas_corta()
-    tsp.plotear_resultado(ruta, True)
 
 
 if __name__ == "__main__":
     # Solve the TSP problem
-    study_case_1()
+    # Solucion para 8 ciudades
+    study_case_1(3)
+    # Solucion para 50 ciudades
+    study_case_1(51)
+    # Solucion para 100 ciudades
+    study_case_1(100)
