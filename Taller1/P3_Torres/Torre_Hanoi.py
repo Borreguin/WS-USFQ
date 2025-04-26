@@ -65,7 +65,9 @@ def dibujar_todos_estados(estados):
 guardar_estado(torres_iniciales)
 torres = {k: v.copy() for k, v in torres_iniciales.items()}
 torre_de_hanoi(n_disks, 'A', 'C', 'B', torres)
-dibujar_todos_estados(estados)
+dibujar_todos_estados(estados) 
+
+# El código dibuja la Torre de Hanoi y muestra todos los estados intermedios en un gráfico.
 
 
 
