@@ -7,9 +7,12 @@
 
     • Patricia Lema
 
-    • xxxxx
+    • Ana Navaz
 
-    • xxxxx
+    • Diana
+    
+    • Sebas
+- 
 
 ### Resumen
 - [Taller 1](/Taller1/README.md)
