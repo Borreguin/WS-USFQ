@@ -13,6 +13,8 @@
     
     • Sebastián Ruiz
 - 
+Link de ClickUp:
+  https://sharing.clickup.com/90131170985/t/h/86a85bdh6/S53FL6XO4NTTE1P
 
 ### Resumen
 - [Taller 1](/Taller1/README.md)
