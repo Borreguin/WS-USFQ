@@ -2,6 +2,86 @@
 import matplotlib.pyplot as plt
 from collections import deque
 
+import networkx as nx
+from collections import deque
+
+# Estado inicial y final
+initial_state = ("L", "L", "L", "L")
+goal_state = ("R", "R", "R", "R")
+
+# Verifica si el estado es válido (sin comerse entre sí)
+def is_valid(state):
+    farmer, wolf, goat, cabbage = state
+    if farmer != goat:
+        if wolf == goat or goat == cabbage:
+            return False
+    return True
+
+# Genera todos los estados vecinos válidos desde un estado
+def get_neighbors(state):
+    farmer, wolf, goat, cabbage = state
+    neighbors = []
+    opposite = {"L": "R", "R": "L"}
+
+    options = [None, 'wolf', 'goat', 'cabbage']
+    for carry in options:
+        nf, nw, ng, nc = farmer, wolf, goat, cabbage
+        nf = opposite[farmer]
+        if carry == 'wolf' and farmer == wolf:
+            nw = opposite[wolf]
+        elif carry == 'goat' and farmer == goat:
+            ng = opposite[goat]
+        elif carry == 'cabbage' and farmer == cabbage:
+            nc = opposite[cabbage]
+        elif carry is None:
+            pass
+        else:
+            continue
+        new_state = (nf, nw, ng, nc)
+        if is_valid(new_state):
+            neighbors.append(new_state)
+    return neighbors
+
+# Búsqueda BFS para resolver el acertijo y construir el grafo
+def solve_and_build_graph():
+    G = nx.DiGraph()
+    queue = deque()
+    queue.append((initial_state, [initial_state]))
+    visited = set()
+    solution_path = []
+
+    while queue:
+        current_state, path = queue.popleft()
+        G.add_node(current_state)
+        if current_state == goal_state:
+            solution_path = path
+            break
+        visited.add(current_state)
+        for neighbor in get_neighbors(current_state):
+            if neighbor not in visited:
+                G.add_node(neighbor)
+                G.add_edge(current_state, neighbor)
+                queue.append((neighbor, path + [neighbor]))
+
+    return G, solution_path
+
+# Ejecutar solución y obtener grafo
+graph, solution = solve_and_build_graph()
+
+# Posicionamiento de nodos
+pos = nx.spring_layout(graph, seed=42)
+
+# Colorear nodos del camino solución
+node_colors = ['lightgreen' if node in solution else 'lightgray' for node in graph.nodes()]
+
+# Dibujar grafo
+plt.figure(figsize=(15, 10))
+nx.draw(graph, pos, with_labels=True, node_size=1000, node_color=node_colors, font_size=8)
+nx.draw_networkx_labels(graph, pos, labels={node: f"{node}" for node in graph.nodes()}, font_size=8)
+plt.title("Solución al acertijo del granjero: grafo de estados", fontsize=14)
+plt.axis('off')
+plt.show()
+plt.savefig("acertijo_granjero.png", dpi=300, bbox_inches='tight')
 
 
 
