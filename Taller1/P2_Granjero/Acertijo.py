@@ -112,5 +112,4 @@ nx.draw(graph_dfs, pos_dfs, with_labels=True, node_size=1000, node_color=node_co
 nx.draw_networkx_labels(graph_dfs, pos_dfs, labels={node: f"{node}" for node in graph_dfs.nodes()}, font_size=8)
 plt.title("Solución al acertijo del granjero: grafo de estados", fontsize=14)
 plt.axis('off')
-plt.show()
 plt.savefig("Taller1/P2_Granjero/IMG/acertijo_granjero_dfs.png", dpi=300, bbox_inches='tight')
