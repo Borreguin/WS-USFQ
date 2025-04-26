@@ -10,7 +10,7 @@ from collections import deque
 
 
 #from Taller1.P1_TSP.util import plotear_ruta, generar_ciudades_con_distancias
-from util import plotear_ruta, generar_ciudades_con_distancias, bfs, dfs, a_star
+from util import plotear_ruta, generar_ciudades_con_distancias, bfs, dfs, a_star, vecinos_cercanos
 
 
 
@@ -26,8 +26,10 @@ class TSP:
             mejor_ruta = dfs(self.ciudades, self.distancias)
         elif algoritmo == "a_star":
             mejor_ruta = a_star(self.ciudades, self.distancias)
+        elif algoritmo == "vecinos":
+            mejor_ruta = vecinos_cercanos(self.ciudades, self.distancias)        
         else:
-            raise ValueError("Algoritmo no soportado. Usa 'bfs', 'dfs' o 'a_star'.")
+            raise ValueError("Algoritmo no soportado. Usa 'bfs', 'dfs', 'a_star' o 'vecinos cercanos'.")
         return mejor_ruta
 
 
@@ -48,15 +50,19 @@ def study_case_1(algoritmo="bfs"):
         tsp.plotear_resultado(ruta)
 
 
-def study_case_2():
+def study_case_2(algoritmo="bfs"):
     n_cities = 100
     ciudades, distancias = generar_ciudades_con_distancias(n_cities)
     tsp = TSP(ciudades, distancias)
     
-    ruta = ciudades.keys()
-    ruta = tsp.encontrar_la_ruta_mas_corta()
+    rutas = []
+    rutas.append(ciudades.keys())
+    rutas.append(tsp.encontrar_la_ruta_mas_corta(algoritmo))
     
-    tsp.plotear_resultado(ruta)
+    for ruta in rutas:
+        tsp.plotear_resultado(ruta)
+
+
 
 def menu():
     print("El programa mostrara primero las ciudades generadas y luego la ruta más corta encontrada\n")
@@ -64,6 +70,7 @@ def menu():
     print("1. BFS")
     print("2. DFS")
     print("3. A*")
+    print("4. Vecinos cercanos")
     opcion = input("Ingrese el número de la opción deseada: ")
 
     if opcion == "1":
@@ -72,6 +79,8 @@ def menu():
         algoritmo = "dfs"
     elif opcion == "3":
         algoritmo = "a_star"
+    elif opcion == "4":
+        algoritmo = "vecinos"
     else:
         print("Opción no válida. Usando BFS por defecto.")
         algoritmo = "bfs"
@@ -80,8 +89,12 @@ def menu():
 
 
 if __name__ == "__main__":
-    algoritmo = menu()
 
     # Solve the TSP problem
+    print("Ejecutando el caso de estudio 1: 10 ciudades...")
+    algoritmo = menu()
     study_case_1(algoritmo)
-    #study_case_2()
+
+    print("\nEjecutando el caso de estudio 2: 100 ciudades...")
+    algoritmo = menu()
+    study_case_2(algoritmo)
