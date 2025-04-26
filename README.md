@@ -2,16 +2,16 @@
 # WorkShop-USFQ
 ## Inteligencia artificial
 
-- **Nombre del grupo**: Grupo #
+- **Nombre del grupo**: Grupo 1
 - **Integrantes del grupo**:
 
     • Patricia Lema
 
     • Ana Navaz
 
-    • Diana
+    • Diana Córdova
     
-    • Sebas
+    • Sebastián Ruiz
 - 
 
 ### Resumen
