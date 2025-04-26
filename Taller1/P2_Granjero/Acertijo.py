@@ -106,7 +106,7 @@ plt.axis('off')
 plt.savefig("acertijo_granjero_bfs.png", dpi=300, bbox_inches='tight')
 plt.show()
 
-
+# Dibujar grafo dfs
 plt.figure(figsize=(15, 10), num=1)
 nx.draw(graph_dfs, pos_dfs, with_labels=True, node_size=1000, node_color=node_colors_dfs, font_size=8)
 nx.draw_networkx_labels(graph_dfs, pos_dfs, labels={node: f"{node}" for node in graph_dfs.nodes()}, font_size=8)
@@ -114,10 +114,3 @@ plt.title("Solución al acertijo del granjero: grafo de estados", fontsize=14)
 plt.axis('off')
 plt.show()
 plt.savefig("acertijo_granjero_dfs.png", dpi=300, bbox_inches='tight')
-
-
-
-
-
-if __name__ == '__main__':
-    print("Implementa el código aquí")
