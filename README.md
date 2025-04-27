@@ -52,7 +52,7 @@ Se decidió por usar grafos dentro de todos los ejercicios ya que estos nos ayud
 
 ## 2. Uso de la Inteligencia Artificial - Planeamiento de Tareas
 
-Se utilizó ClickUp para estructurar el TSP en base a subproblemas o hitos a cumplir. Con el fin de hacer esto, se exploró la creación de una [versión alternativa del TSP](/Taller1/P1_TSP/TSP_Ciudades.ipynb) que utiliza la coordenadas geográficas de ciudades del Ecuador como espacio a explorar. Se calcula la ruta óptima y se la muestra en un mapa real.
+Se utilizó ClickUp para estructurar el TSP en base a subproblemas o hitos a cumplir. Con el fin de hacer esto, se exploró la creación de una [versión alternativa del TSP](/Taller1/P1_TSP/TSP_Ciudades.ipynb) que utiliza las coordenadas geográficas de ciudades del Ecuador como espacio a explorar. Se calcula la ruta óptima y se la muestra en un mapa real.
 
 [Link de ClickUp](https://sharing.clickup.com/90131170985/t/h/86a85bdh6/S53FL6XO4NTTE1P)
 
