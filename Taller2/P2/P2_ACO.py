@@ -64,9 +64,18 @@ class AntColonyOptimization:
                 all_paths.append(path)
 
             # Escoger el mejor camino por su tamaño?
+            # El problema de este fragmento es que cuando el camino llega a un punto no
+            # valido, el código sale del while, pero de igual manera agrega el camino a
+            # all_paths, y al momento de comparar, el algoritmo escoje el camino más corto
+            # por lo que se da preferencia a caminos que fallan temprano
+            valid_paths = [path for path in all_paths if path[-1] == self.end]
+
+            if not valid_paths:
+                continue
             # --------------------------
-            all_paths.sort(key=lambda x: len(x))
-            best_path = all_paths[0]
+            # Reemplazamos all_paths por valid_paths en las siguientes lineas
+            valid_paths.sort(key=lambda x: len(x))
+            best_path = valid_paths[0]
 
             self._evaporate_pheromones()
             self._deposit_pheromones(best_path)
@@ -117,8 +126,8 @@ def study_case_2():
     print("Best path: ", aco.best_path)
 
 if __name__ == '__main__':
-    study_case_1()
-    # study_case_2()
+    #study_case_1()
+    study_case_2()
 
 
 
