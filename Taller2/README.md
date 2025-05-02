@@ -25,27 +25,6 @@ Se utilizaron cuatro algoritmos diferentes para los 3 laberintos en el caso de e
 
 Para la evaluación usamos la información que se contiene en el artículo de Tomás, Nuñez y Hernández (n.d) en donde medir la distancia que recorre el camino y el tiempo que demora el algoritmo puede indicar cuál elegir. El artículo destaca que BFS recorre más espacio, DFS es más directo pero no óptimo, Dijkstra garantiza soluciones mínimas de costo acumulado y A estrella usa la heurística para garantizar la mejor solución en el menor espacio de búsqueda posible. 
 
-### C. Describir los parámetros del modelo.
-
-Los laberintos se cargaron desde Github a Google Colab y las celdas se representaron mediante los siguientes caracteres: 
-
-#: muro 
-espacio vacío: celda sin obstáculos
-E: entrada
-S: salida
-
-Parámetros de los algoritmos de búsqueda
-
-Cada algoritmo devuelve:
-
-Una ruta (lista de coordenadas).
-Un tiempo de ejecución (en segundos).
-Variables de salida:
-bfs_path, bfs_time
-dfs_path, dfs_time
-dijkstra_path, dijkstra_time
-a_star_path, a_star_time
-
 RESULTADOS: 
 En el caso del laberinto 3 notamos que: 
 Cuando se compara el tiempo y las distancias de los 4 algoritmos vemos que todos, excepto el DFS, obtienen rutas igualmente cortas. El DFS, al explorar cada rama en su profundidad, aumenta la distancia del camino recorrido, aunque no aumentó el tiempo significativamente (tiene un tiempo de 4.0ms, incluso menor al de A estrella). El algoritmo Dijkstra fue el más rápido, seguido por BFS y A estrella.
@@ -68,6 +47,26 @@ Quizás por la simplicidad del laberinto no hay gran diferencia, dado que el cam
 En el laberinto 3 notamos que: 
 A pesar de lo que se hubiera esperado, el algoritmo Dijkstra fue el más rápido. Ambos algoritmos encontraron el camino con la misma distancia. Gracias a un poco de investigación más profunda, podemos suponer que esto se debe a que el A estrella debe calcular las heurísticas en cada nodo, para decidir cuál explorar primero, quizás en este caso de laberinto más complejo, el tiempo de cada cálculo se acumuló de manera que resultó un poco más lento que el Djisktra, que no tiene que explorar heurística y evita sobrecarga computacional. Este trade-off es importante tenerlo en cuenta. 
 
+### C. Describir los parámetros del modelo.
+
+Los laberintos se cargaron desde Github a Google Colab y las celdas se representaron mediante los siguientes caracteres: 
+
+#: muro 
+espacio vacío: celda sin obstáculos
+E: entrada
+S: salida
+
+Parámetros de los algoritmos de búsqueda
+
+Cada algoritmo devuelve:
+
+Una ruta (lista de coordenadas).
+Un tiempo de ejecución (en segundos).
+Variables de salida:
+bfs_path, bfs_time
+dfs_path, dfs_time
+dijkstra_path, dijkstra_time
+a_star_path, a_star_time
 ## 2. Optimización de Colonia de Hormigas
 
 Ant	 Colony	 Optimization	 (ACO)	 es una técnica de optimización inspirada en el
