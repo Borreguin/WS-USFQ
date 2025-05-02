@@ -15,7 +15,58 @@ y mirar cómo se comportan para cada laberinto
 
 ### A. Leer el laberinto y representarlo como un grafo.
 
+En el punto C se puede ver la estrucutra que se usó para representar el laberinto como un grafo. La función recorre todas las celdas del laberinto qy agrega nodos a aquellas que no son muro, procede a buscar otras celdas sin muros. 
+
 ### B. Aplicar algoritmos de búsqueda
+
+Se utilizaron cuatro algoritmos diferentes para los 3 laberintos en el caso de estudio número 1. El primer algoritmo que se corrió fue el Breadth-First Search. La lógica detrás de este laberinto es buscar el camino a través de los vecinos más cercanos. En general, esto funciona bastante bien para grafos en donde no hay ponderación. El segundo fue el Depth-Frist Search, que explora cada rama hasta llegar a su nodo más profundo antes de retroceder. El tercer algoritmo fue el Djistra, es un algoritmo de costo uniforme que explora la ruta de menor costo acumulado, es un algoritmo voraz que garantiza la ruta óptima si los costos son positivos. El cuarto algoritmo es el A estrella, que usa la heurística (o información adicional que ayuda a encontrar la solución óptima)
+
+#### B.1 Tipos de parámetros de evaluación
+
+Para la evaluación usamos la información que se contiene en el artículo de Tomás, Nuñez y Hernández (n.d) en donde medir la distancia que recorre el camino y el tiempo que demora el algoritmo puede indicar cuál elegir. El artículo destaca que BFS recorre más espacio, DFS es más directo pero no óptimo, Dijkstra garantiza soluciones mínimas de costo acumulado y A estrella usa la heurística para garantizar la mejor solución en el menor espacio de búsqueda posible. 
+
+### C. Describir los parámetros del modelo.
+
+Los laberintos se cargaron desde Github a Google Colab y las celdas se representaron mediante los siguientes caracteres: 
+
+#: muro 
+espacio vacío: celda sin obstáculos
+E: entrada
+S: salida
+
+Parámetros de los algoritmos de búsqueda
+
+Cada algoritmo devuelve:
+
+Una ruta (lista de coordenadas).
+Un tiempo de ejecución (en segundos).
+Variables de salida:
+bfs_path, bfs_time
+dfs_path, dfs_time
+dijkstra_path, dijkstra_time
+a_star_path, a_star_time
+
+RESULTADOS: 
+En el caso del laberinto 3 notamos que: 
+Cuando se compara el tiempo y las distancias de los 4 algoritmos vemos que todos, excepto el DFS, obtienen rutas igualmente cortas. El DFS, al explorar cada rama en su profundidad, aumenta la distancia del camino recorrido, aunque no aumentó el tiempo significativamente (tiene un tiempo de 4.0ms, incluso menor al de A estrella). El algoritmo Dijkstra fue el más rápido, seguido por BFS y A estrella.
+
+En el caso del laberinto 1 notamos que: 
+Cuando se compara el tiempo y las distancias de los 4 algoritmos vemos que el DFS es el más rápido y encuentra una rota tan corta como la hallada por los otros 3 algoritmos. El BFS y el Dijkstra son los algoritmos que más tiempo demoraron, casi tres veces el tiempo del DFS. 
+
+En el caso del laberinto 2 notamos que: 
+
+El algoritmo A estrella fue el más rápido, seguido por el DFS. Mientras tanto, el algoritmo Dijkstra y BFS fueron más lentos. No obstante, los 4 algoritmos encontraron caminos con la misma distancia. 
+
+##En este caso, se agregaron pesos a los laberintos para probar los algoritmos Dijkstra y A estrella, que responden a grafos con costo de una mejor manera. Encontramos lo siguiente
+
+En el laberinto 1 notamos que: 
+Es un laberinto simple, o sea un grafo pequeño, por lo que no vale la pena sobrecargar computacionalmente al calcular A estrella (heurística) porque no da una ganancia significativa en eficiencia. Por lo tanto, Dijkstra encuentra la mejor solución al ser ligeramente más rápido. 
+
+En el laberinto 2 notamos que: 
+Quizás por la simplicidad del laberinto no hay gran diferencia, dado que el camino encontrado tiene la misma distancia para ambos algoritmos. El A esgtrella fue el más rápido, lo que puede explicarse por el uso de heurística con distancia Manhattan. Djikstra, al ser un algoritmo voraz que no usa heurística, puede haber evaluado nodos innecesarios. 
+
+En el laberinto 3 notamos que: 
+A pesar de lo que se hubiera esperado, el algoritmo Dijkstra fue el más rápido. Ambos algoritmos encontraron el camino con la misma distancia. Gracias a un poco de investigación más profunda, podemos suponer que esto se debe a que el A estrella debe calcular las heurísticas en cada nodo, para decidir cuál explorar primero, quizás en este caso de laberinto más complejo, el tiempo de cada cálculo se acumuló de manera que resultó un poco más lento que el Djisktra, que no tiene que explorar heurística y evita sobrecarga computacional. Este trade-off es importante tenerlo en cuenta. 
 
 ## 2. Optimización de Colonia de Hormigas
 
