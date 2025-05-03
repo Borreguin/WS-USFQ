@@ -67,6 +67,12 @@ bfs_path, bfs_time
 dfs_path, dfs_time
 dijkstra_path, dijkstra_time
 a_star_path, a_star_time
+
+### Soluciones
+Sin pesos: ![image](https://github.com/user-attachments/assets/59de3a40-4d3e-4270-93c5-48a10f887cd9)
+
+Con pesos: ![image](https://github.com/user-attachments/assets/04a26019-4cda-452e-bf46-ecc85e162d2d)
+
 ## 2. Optimización de Colonia de Hormigas
 
 Ant	 Colony	 Optimization	 (ACO)	 es una técnica de optimización inspirada en el
