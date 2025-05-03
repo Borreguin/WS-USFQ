@@ -69,9 +69,23 @@ dijkstra_path, dijkstra_time
 a_star_path, a_star_time
 
 ### Soluciones
+Laberinto 1: 
 Sin pesos: ![image](https://github.com/user-attachments/assets/59de3a40-4d3e-4270-93c5-48a10f887cd9)
 
 Con pesos: ![image](https://github.com/user-attachments/assets/04a26019-4cda-452e-bf46-ecc85e162d2d)
+
+Laberinto 2:
+Sin pesos: ![image](https://github.com/user-attachments/assets/15c0e87d-d448-4a19-9384-188901089cbe)
+
+Con pesos: ![image](https://github.com/user-attachments/assets/3636e3ed-a731-43fe-a7a7-f053e7b6820b)
+
+
+Laberinto 3: 
+Sin pesos: ![image](https://github.com/user-attachments/assets/2fdf838a-d030-4678-84b8-cdc315d63ec0)
+
+
+Con pesos: ![image](https://github.com/user-attachments/assets/60f8b327-11ac-49f1-9b41-6bb6099c3721)
+
 
 ## 2. Optimización de Colonia de Hormigas
 
