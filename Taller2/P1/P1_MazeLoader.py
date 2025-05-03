@@ -2,9 +2,18 @@ import matplotlib.pyplot as plt
 import os, sys
 project_path = os.path.dirname(__file__)
 sys.path.append(project_path)
-from Taller2.P1.P1_util import define_color
+#from Taller2.P1.P1_util import define_color
 
-
+def define_color(cell):
+    if cell == '#':
+        return 'black'
+    elif cell == ' ':   # Espacio vacío
+        return 'white'
+    elif cell == 'E':   # Entrada
+        return 'green'
+    elif cell == 'S':   # Salida
+        return 'red'
+    
 class MazeLoader:
     def __init__(self, filename):
         self.filename = filename
