@@ -1,0 +1,33 @@
+C. Describir los parámetros del modelo
+¿Qué propósito tiene cada parámetro en el modelo?
+    start:  punto de partida para cada hormiga
+    end:    coordenadas de destino
+    obstacles:  celdas bloqueadas que no pueden ser atravesadas por las hormigas
+    grid size:  tamaño del mapa (10 x 10)
+    num_ants:   cantidad de hormigas
+    evaporation_rate:   tasa de evaporacion de feromonas por cada iteraación
+    alpha:  peso relativo de las feromonas en cada decisión de la hormiga
+    beta:   peso relativo de la heuristica (distancia a destino)    
+
+D. Pregunta de investigación:
+¿Será que se puede utilizar este algoritmo para resolver el Travelling Salesman
+Problema (TSP)? ¿Cuáles serían los pasos de su implementación?
+
+    Definir las ciudades con coordenadas 2D
+    Calcular la matriz de distancias entre ciudades
+    Inicializar parametros:
+        número de hormigas
+        número de iteraciones
+        peso de feromonas (alpha)
+        peso de la heuristica (beta)
+        tasa de evaporación de feromonas
+        cantidad de feromonas depositidas por una buena solución
+    Inicio en una ciudad aleatoria
+    Calcular la probabilidad de ir a una ciudad no visitada
+    Seleccionar la proxima ciudad aleatoriamente (ponderado por P)
+    Calcular la longitud del recorrido de cada hormiga
+    Encontrar la mejor ruta
+    Aplicar la evaporacion de feromonas
+    Reforzar las feromonas en los caminos recorridos
+    Iterar este proceso hasta encontrar la mejor ruta global
+    Visualizar 
