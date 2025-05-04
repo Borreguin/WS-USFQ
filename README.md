@@ -2,7 +2,7 @@
 # WorkShop-USFQ
 ## Inteligencia artificial
 
-- **Nombre del grupo**: Grupo #5
+- **Nombre del grupo**: Grupo #
 - **Integrantes del grupo**:
 
     • Carla Parra
