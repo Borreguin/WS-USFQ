@@ -21,7 +21,7 @@ class MazeLoader:
         self.maze = _maze
         return self
 
-    def plot_maze(self):
+    def plot_maze(self, path = None, show_graph = False):
         height = len(self.maze)
         width = len(self.maze[0])
 
@@ -43,11 +43,16 @@ class MazeLoader:
         ax.set_yticks([])
         self.graph = self.get_graph()
         plt.title("Maze")
-        nx.draw(self.graph, 
-                pos={(r, c): (c, -r) for r in range(height) for c in range(width) if self.maze[r][c] != '#'},ax=ax, 
-                with_labels=False, node_size=30, node_color='black', font_size=10,
-                edge_color='black', width=0.5, alpha=0.75, arrows=False, connectionstyle='arc3,rad=0.1'
-                )
+        if show_graph:
+            pos = {(r, c): (c, -r) for r in range(height) for c in range(width) if self.maze[r][c] != '#'}
+            # Draw only edges and small nodes for clarity
+            nx.draw_networkx_edges(self.graph, pos, ax=ax, edge_color='gray', width=0.5)
+            nx.draw_networkx_nodes(self.graph, pos, ax=ax, node_color='lightblue', node_size=15)
+        if path:
+            pos = {(r, c): (c, -r) for r in range(height) for c in range(width) if self.maze[r][c] != '#'}
+            nx.draw_networkx_nodes(self.graph, pos, ax=ax, nodelist=path, node_color='yellow', node_size=30)
+            nx.draw_networkx_edges(self.graph, pos, ax=ax, edgelist=list(zip(path[:-1], path[1:])), edge_color='orange', width=2)
+
         plt.tight_layout()
         plt.show()
         return self
@@ -58,7 +63,7 @@ class MazeLoader:
         G = nx.Graph()
         
         # Movement directions: up, down, left, right
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1), (1, 1), (-1, -1), (1, -1), (-1, 1)]
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
         for r in range(rows):
             for c in range(cols):
