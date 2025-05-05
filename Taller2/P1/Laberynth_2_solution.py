@@ -1,9 +1,9 @@
-from Taller2.P1.P1_MazeLoader_3 import MazeLoader
+from P1_MazeLoader_3 import MazeLoader
 import copy
 import heapq
 
 def load_laberynth():
-    maze = MazeLoader('laberinto3.txt').load_Maze()
+    maze = MazeLoader('laberinto2.txt').load_Maze()
     graph_3 = maze.get_graph()
     return maze, graph_3
 
