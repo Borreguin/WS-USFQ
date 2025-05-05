@@ -7,7 +7,7 @@
   * Diana Córdova
   * Sebastián Ruiz
 
-## 1. Uso de Algoritmos de Búsqueda
+## [1. Uso de Algoritmos de Búsqueda](/Taller2/P1/P1.py)
 
 El objetivo de esta tarea es utilizar cualquier algoritmo de búsqueda para resolver los 3 laberintos propuestos, 
 el reto es poder visualizar/representar los resultados, adicionalmente poder comparar al menos 2 algoritmos de búsqueda 
@@ -15,37 +15,40 @@ y mirar cómo se comportan para cada laberinto
 
 ### A. Leer el laberinto y representarlo como un grafo.
 
-En el punto C se puede ver la estrucutra que se usó para representar el laberinto como un grafo. La función recorre todas las celdas del laberinto qy agrega nodos a aquellas que no son muro, procede a buscar otras celdas sin muros. 
+En el punto C se puede ver la estructura que se usó para representar el laberinto como un grafo. La función recorre todas las celdas del laberinto y agrega nodos a aquellas que no son muro, procede a buscar otras celdas sin muros.
+
+También se agregó funcionalidad en P1_Mazeloader.py para que el método get_graph de la clase MazeLoader tenga un parámetro `visualize`, el cual al ser seteado a `True` genera un gráfico del laberinto como un grafo, donde los nodos están sobrepuestos sobre cada celda, y conectados a los nodos adyacentes.
 
 ### B. Aplicar algoritmos de búsqueda
 
-Se utilizaron cuatro algoritmos diferentes para los 3 laberintos en el caso de estudio número 1. El primer algoritmo que se corrió fue el Breadth-First Search. La lógica detrás de este laberinto es buscar el camino a través de los vecinos más cercanos. En general, esto funciona bastante bien para grafos en donde no hay ponderación. El segundo fue el Depth-Frist Search, que explora cada rama hasta llegar a su nodo más profundo antes de retroceder. El tercer algoritmo fue el Djistra, es un algoritmo de costo uniforme que explora la ruta de menor costo acumulado, es un algoritmo voraz que garantiza la ruta óptima si los costos son positivos. El cuarto algoritmo es el A estrella, que usa la heurística (o información adicional que ayuda a encontrar la solución óptima)
+Se utilizaron cuatro algoritmos diferentes para los 3 laberintos en el caso de estudio número 1. El primer algoritmo que se corrió fue el Breadth-First Search. La lógica detrás de este algoritmo es buscar el camino a través de los vecinos más cercanos. En general, esto funciona bastante bien para grafos en donde no hay ponderación. El segundo fue el Depth-First Search, que explora cada rama hasta llegar a su nodo más profundo antes de retroceder. El tercer algoritmo fue el Dijkstra, es un algoritmo de costo uniforme que explora la ruta de menor costo acumulado, es un algoritmo voraz que garantiza la ruta óptima si los costos son positivos. El cuarto algoritmo es el A*, que usa la heurística (o información adicional que ayuda a encontrar la solución óptima)
 
 #### B.1 Tipos de parámetros de evaluación
 
-Para la evaluación usamos la información que se contiene en el artículo de Tomás, Nuñez y Hernández (n.d) en donde medir la distancia que recorre el camino y el tiempo que demora el algoritmo puede indicar cuál elegir. El artículo destaca que BFS recorre más espacio, DFS es más directo pero no óptimo, Dijkstra garantiza soluciones mínimas de costo acumulado y A estrella usa la heurística para garantizar la mejor solución en el menor espacio de búsqueda posible. 
+Para la evaluación usamos la información que se contiene en el artículo de Tomás, Nuñez y Hernández (n.d) en donde medir la distancia que recorre el camino y el tiempo que demora el algoritmo puede indicar cuál elegir. El artículo destaca que BFS recorre más espacio, DFS es más directo pero no óptimo, Dijkstra garantiza soluciones mínimas de costo acumulado y A* usa la heurística para garantizar la mejor solución en el menor espacio de búsqueda posible. 
 
-RESULTADOS: 
+## RESULTADOS:
+
 En el caso del laberinto 3 notamos que: 
-Cuando se compara el tiempo y las distancias de los 4 algoritmos vemos que todos, excepto el DFS, obtienen rutas igualmente cortas. El DFS, al explorar cada rama en su profundidad, aumenta la distancia del camino recorrido, aunque no aumentó el tiempo significativamente (tiene un tiempo de 4.0ms, incluso menor al de A estrella). El algoritmo Dijkstra fue el más rápido, seguido por BFS y A estrella.
+Cuando se compara el tiempo y las distancias de los 4 algoritmos vemos que todos, excepto el DFS, obtienen rutas igualmente cortas. El DFS, al explorar cada rama en su profundidad, aumenta la distancia del camino recorrido, aunque no aumentó el tiempo significativamente (tiene un tiempo de 4.0ms, incluso menor al de A*). El algoritmo Dijkstra fue el más rápido, seguido por BFS y A*.
 
 En el caso del laberinto 1 notamos que: 
 Cuando se compara el tiempo y las distancias de los 4 algoritmos vemos que el DFS es el más rápido y encuentra una rota tan corta como la hallada por los otros 3 algoritmos. El BFS y el Dijkstra son los algoritmos que más tiempo demoraron, casi tres veces el tiempo del DFS. 
 
 En el caso del laberinto 2 notamos que: 
 
-El algoritmo A estrella fue el más rápido, seguido por el DFS. Mientras tanto, el algoritmo Dijkstra y BFS fueron más lentos. No obstante, los 4 algoritmos encontraron caminos con la misma distancia. 
+El algoritmo A* fue el más rápido, seguido por el DFS. Mientras tanto, el algoritmo Dijkstra y BFS fueron más lentos. No obstante, los 4 algoritmos encontraron caminos con la misma distancia. 
 
-##En este caso, se agregaron pesos a los laberintos para probar los algoritmos Dijkstra y A estrella, que responden a grafos con costo de una mejor manera. Encontramos lo siguiente
+#### Laberintos con pesos: se agregaron pesos a los laberintos para probar los algoritmos Dijkstra y A*, que responden a grafos con costo de una mejor manera. Encontramos lo siguiente
 
 En el laberinto 1 notamos que: 
-Es un laberinto simple, o sea un grafo pequeño, por lo que no vale la pena sobrecargar computacionalmente al calcular A estrella (heurística) porque no da una ganancia significativa en eficiencia. Por lo tanto, Dijkstra encuentra la mejor solución al ser ligeramente más rápido. 
+Es un laberinto simple, o sea un grafo pequeño, por lo que no vale la pena sobrecargar computacionalmente al calcular A* (heurística) porque no da una ganancia significativa en eficiencia. Por lo tanto, Dijkstra encuentra la mejor solución al ser ligeramente más rápido. 
 
 En el laberinto 2 notamos que: 
-Quizás por la simplicidad del laberinto no hay gran diferencia, dado que el camino encontrado tiene la misma distancia para ambos algoritmos. El A esgtrella fue el más rápido, lo que puede explicarse por el uso de heurística con distancia Manhattan. Djikstra, al ser un algoritmo voraz que no usa heurística, puede haber evaluado nodos innecesarios. 
+Quizás por la simplicidad del laberinto no hay gran diferencia, dado que el camino encontrado tiene la misma distancia para ambos algoritmos. El A* fue el más rápido, lo que puede explicarse por el uso de heurística con distancia Manhattan. Djikstra, al ser un algoritmo voraz que no usa heurística, puede haber evaluado nodos innecesarios. 
 
 En el laberinto 3 notamos que: 
-A pesar de lo que se hubiera esperado, el algoritmo Dijkstra fue el más rápido. Ambos algoritmos encontraron el camino con la misma distancia. Gracias a un poco de investigación más profunda, podemos suponer que esto se debe a que el A estrella debe calcular las heurísticas en cada nodo, para decidir cuál explorar primero, quizás en este caso de laberinto más complejo, el tiempo de cada cálculo se acumuló de manera que resultó un poco más lento que el Djisktra, que no tiene que explorar heurística y evita sobrecarga computacional. Este trade-off es importante tenerlo en cuenta. 
+A pesar de lo que se hubiera esperado, el algoritmo Dijkstra fue el más rápido. Ambos algoritmos encontraron el camino con la misma distancia. Gracias a un poco de investigación más profunda, podemos suponer que esto se debe a que el A* debe calcular las heurísticas en cada nodo, para decidir cuál explorar primero, quizás en este caso de laberinto más complejo, el tiempo de cada cálculo se acumuló de manera que resultó un poco más lento que el Djisktra, que no tiene que explorar heurística y evita sobrecarga computacional. Este trade-off es importante tenerlo en cuenta. 
 
 ### C. Describir los parámetros del modelo.
 
@@ -87,7 +90,7 @@ Sin pesos: ![image](https://github.com/user-attachments/assets/2fdf838a-d030-467
 Con pesos: ![image](https://github.com/user-attachments/assets/60f8b327-11ac-49f1-9b41-6bb6099c3721)
 
 
-## 2. Optimización de Colonia de Hormigas
+## [2. Optimización de Colonia de Hormigas](/Taller2/P2/P2_ACO.py)
 
 Ant	 Colony	 Optimization	 (ACO)	 es una técnica de optimización inspirada en el
 comportamiento de las hormigas reales cuando buscan recursos para su colonia. El propósito
@@ -96,21 +99,21 @@ para encontrar el mejor camino desde el nido de la colonia a la fuente de recurs
 
 ### A. Correr la implementación planteada. Analizar el código.
 
-Se corrió el programa para el caso de estudio 1 algunas veces. Para algunos de los casos, el camino seleccionado por el algoritmo no llegaba a la meta planteada. Al revisar el código, se observó que en el fragmento del código que hace que la hormiga recorra, cuando la posición siguiente no es válida, el algoritmo termina el trayecto actual, pero a pesar de no haber llegado a la meta lo almacena. Posteriormente, de todos los caminos almacenados, el algoritmo selecciona el más corto, lo que quiere decir que a pesar de haber fallado en el trayecto, si un camino erróneo es más corto que cualquier camino correcto, el algoritmo seleccionará y graficará el camino más corto.
+Se corrió el programa para el caso de estudio 1 algunas veces. Para algunos de los intentos, el camino seleccionado por el algoritmo no llegaba a la meta planteada. Al revisar el código, se observó que en el fragmento del código que hace que recorrer a la hormiga, el algoritmo termina el trayecto actual cuando la posición siguiente no es válida. Pero a pesar de no haber llegado a la meta guarda el trayecto con los demás. Posteriormente, de todos los caminos almacenados, el algoritmo selecciona el más corto, lo que quiere decir que a pesar de haber fallado en el trayecto, si un camino erróneo es más corto que cualquier camino correcto, el algoritmo seleccionará y graficará el camino más corto.
 
-Para resolver esto, se añadió un paso entre el recorrido de todas las hormigas, y la selección del mejor camino. A fin de comparar solamente caminos que llegan a la meta, se creo una lista `valid_paths` que es poblada por los caminos en `all_paths` que han alcanzado la meta.
+Para resolver esto, se añadió un paso entre el recorrido de todas las hormigas y la selección del mejor camino. A fin de comparar solamente caminos que llegan a la meta, se creo una lista `valid_paths` que es poblada por los caminos en `all_paths` que han alcanzado la meta.
 
 ### B. Que ocurre con el 2do caso de estudio?
 
 En el 2do caso de estudio se hubiesen visto fallas en todas las iteraciones, pero se realizó la corrección detallada en el literal A antes de empezar con el 2do caso.
 
-Sin embargo, se observó una pecularidad en los caminos que se graficaban en el 2do caso: una vez superados los obstáculos, a pesar de tener un camino recto hacia la meta, el camino seleccionado era uno en el cual había una desviación de 45º que era corregida en el siguiente paso. Esto se debe a la naturaleza estocástica del modelo, una vez que las hormigas empiezan a caminar por este tipo de caminos, el camino es reforzado debido a la forman en la que el parámetro de las feromonas influye en la caminata de hormigas subsecuentes.
+Sin embargo, se observó una pecularidad en los caminos que se graficaban en el 2do caso: una vez superados los obstáculos, a pesar de tener un camino recto hacia la meta, el camino seleccionado a menudo presentaba una desviación de 45º que era corregida en el siguiente paso (como andar por los catetos de un triángulo en lugar de recorrer su hipotenusa). Esto se debe a la naturaleza estocástica del modelo, una vez que las hormigas empiezan a caminar por este tipo de caminos, el camino es reforzado debido a la forman en la que el parámetro de las feromonas influye en la caminata de hormigas subsecuentes.
 
-Con el fin de solucionar esto, se puede incrementar el valor del parámetro `beta` del modelo, el cual controla la influencia de la distancia. Para valores altos de `beta`, hay una atracción mayor hacia la meta.
+Con el fin de solucionar esto, se puede incrementar el valor del parámetro `beta` del modelo, el cual controla la influencia de la distancia. Para valores más grandes de `beta`, hay una atracción mayor hacia la meta. Los valores de `alpha` y `beta` controlan el balance entre exploración y explotación del modelo.
 
 ### C. Describir los parámetros del modelo.
 
-* start: Las coordinadas posición inicial de las hormigas.
+* start: Las coordinadas de la posición inicial de las hormigas.
 * end: Las coordinadas de la ubicación de la meta.
 * obstacles: Lista que contiene las coordenadas sobre las cuales las hormigas no pueden moverse.
 * grid_size: El tamaño de la cuadrícula (10x10 en este caso)
