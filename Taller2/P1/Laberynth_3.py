@@ -1,4 +1,4 @@
-from P1_MazeLoader import MazeLoader
+from Taller2.P1.P1_MazeLoader_3 import MazeLoader
 import copy
 import heapq
 
