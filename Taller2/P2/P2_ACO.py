@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 
 class AntColonyOptimization:
-    def __init__(self, start, end, obstacles, grid_size=(10, 10), num_ants=10, evaporation_rate=0.1, alpha=0.1, beta=15):
+    def __init__(self, start, end, obstacles, grid_size=(10, 10), num_ants=50, evaporation_rate=0.3, alpha=1.0, beta=5.0):
+        # Inicialización de parámetros
         self.start = start
         self.end = end
         self.obstacles = obstacles
@@ -12,10 +13,11 @@ class AntColonyOptimization:
         self.evaporation_rate = evaporation_rate
         self.alpha = alpha
         self.beta = beta
-        self.pheromones = np.ones(grid_size)
+        self.pheromones = np.ones(grid_size)  # Matriz de feromonas
         self.best_path = None
 
     def _get_neighbors(self, position):
+        # Obtener vecinos válidos (no salirse del grid ni chocar obstáculos)
         pos_x, pos_y = position
         neighbors = []
         for i in range(-1, 2):
@@ -27,6 +29,7 @@ class AntColonyOptimization:
         return neighbors
 
     def _select_next_position(self, position, visited):
+        # Selección probabilística del siguiente movimiento basado en feromonas y heurística
         neighbors = self._get_neighbors(position)
         probabilities = []
         total = 0
@@ -34,8 +37,9 @@ class AntColonyOptimization:
             if neighbor not in visited:
                 pheromone = self.pheromones[neighbor[1], neighbor[0]]
                 heuristic = 1 / (np.linalg.norm(np.array(neighbor) - np.array(self.end)) + 0.1)
-                probabilities.append((neighbor, pheromone ** self.alpha * heuristic ** self.beta))
-                total += pheromone ** self.alpha * heuristic ** self.beta
+                prob = (pheromone ** self.alpha) * (heuristic ** self.beta)
+                probabilities.append((neighbor, prob))
+                total += prob
         if not probabilities:
             return None
         probabilities = [(pos, prob / total) for pos, prob in probabilities]
@@ -43,11 +47,18 @@ class AntColonyOptimization:
         return probabilities[selected][0]
 
     def _evaporate_pheromones(self):
+        # Reducción general de las feromonas
         self.pheromones *= (1 - self.evaporation_rate)
 
     def _deposit_pheromones(self, path):
+        # Depósito de feromonas en el camino recorrido
         for position in path:
             self.pheromones[position[1], position[0]] += 1
+
+    def _path_quality(self, path):
+        # Cálculo de calidad de un camino: promedio de feromonas
+        pheromone_sum = sum(self.pheromones[pos[1], pos[0]] for pos in path)
+        return pheromone_sum / len(path)
 
     def find_best_path(self, num_iterations):
         for _ in range(num_iterations):
@@ -63,19 +74,22 @@ class AntColonyOptimization:
                     current_position = next_position
                 all_paths.append(path)
 
-            # Escoger el mejor camino por su tamaño?
-            # --------------------------
-            all_paths.sort(key=lambda x: len(x))
-            best_path = all_paths[0]
+            # Filtrar solo caminos que alcanzan la meta
+            all_paths = [path for path in all_paths if path and path[-1] == self.end]
+
+            if all_paths:
+                # Selección del mejor camino basado en la calidad de feromonas
+                all_paths.sort(key=lambda x: -self._path_quality(x))
+                best_path = all_paths[0]
 
             self._evaporate_pheromones()
             self._deposit_pheromones(best_path)
 
             if self.best_path is None or len(best_path) <= len(self.best_path):
                 self.best_path = best_path
-            # --------------------------
 
     def plot(self):
+        # Visualización del grid, feromonas, obstáculos, punto de inicio y fin
         cmap = LinearSegmentedColormap.from_list('pheromone', ['white', 'green', 'red'])
         plt.figure(figsize=(8, 8))
         plt.imshow(self.pheromones, cmap=cmap, vmin=np.min(self.pheromones), vmax=np.max(self.pheromones))
@@ -118,7 +132,4 @@ def study_case_2():
 
 if __name__ == '__main__':
     study_case_1()
-    # study_case_2()
-
-
-
+    study_case_2()
