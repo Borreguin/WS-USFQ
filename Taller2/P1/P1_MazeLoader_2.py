@@ -21,45 +21,42 @@ class MazeLoader:
         self.maze = _maze
         return self
 
-    def plot_maze(self):
+    def plot_maze(self, path = None, show_graph = False):
         height = len(self.maze)
         width = len(self.maze[0])
 
-        fig = plt.figure(figsize=(width/4, height/4))  # Ajusta el tamaño de la figura según el tamaño del Maze
+        fig, ax = plt.subplots(figsize=(6, 6))
+        ax.set_xlim(-0.5, width - 0.5)
+        ax.set_ylim(-height + 0.5, 0.5)
+        ax.set_aspect('equal')
+        ax.grid(True) # Ajusta el tamaño de la figura según el tamaño del Maze
         for y in range(height):
             for x in range(width):
                 cell = self.maze[y][x]
                 color = define_color(cell)
-                plt.fill([x, x+1, x+1, x], [y, y, y+1, y+1], color=color, edgecolor='black')
+                rect = plt.Rectangle((x -.5, -y - .5), 1, 1, facecolor=color, edgecolor='black')
+                ax.add_patch(rect)
 
-        plt.xlim(0, width)
-        plt.ylim(0, height)
+        
         plt.gca().invert_yaxis()  # Invierte el eje y para que el origen esté en la esquina inferior izquierda
-        plt.xticks([])
-        plt.yticks([])
-        fig.tight_layout()
+        ax.set_xticks([])
+        ax.set_yticks([])
+        self.graph = self.get_graph()
+        plt.title("Maze")
+        if show_graph:
+            pos = {(r, c): (c, -r) for r in range(height) for c in range(width) if self.maze[r][c] != '#'}
+            # Draw only edges and small nodes for clarity
+            nx.draw_networkx_edges(self.graph, pos, ax=ax, edge_color='gray', width=0.5)
+            nx.draw_networkx_nodes(self.graph, pos, ax=ax, node_color='lightblue', node_size=15)
+        if path:
+            pos = {(r, c): (c, -r) for r in range(height) for c in range(width) if self.maze[r][c] != '#'}
+            nx.draw_networkx_nodes(self.graph, pos, ax=ax, nodelist=path, node_color='yellow', node_size=30)
+            nx.draw_networkx_edges(self.graph, pos, ax=ax, edgelist=list(zip(path[:-1], path[1:])), edge_color='orange', width=2)
+
+        plt.tight_layout()
         plt.show()
         return self
 
     def get_graph(self):
-        G = nx.Graph()
-        start = None
-        end = None
-
-        for y, row in enumerate(self.maze):
-            for x, cell in enumerate(row):
-                if cell != '#':
-                    G.add_node((x, y))
-                    if cell == 'E':
-                        start = (x, y)
-                    elif cell == 'S':
-                        end = (x, y)
-
-                    # Conexiones posibles (4-direcciones)
-                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                        nx_, ny_ = x + dx, y + dy
-                        if 0 <= ny_ < len(self.maze) and 0 <= nx_ < len(row):
-                            if self.maze[ny_][nx_] != '#':
-                                G.add_edge((x, y), (nx_, ny_))
-
-        return G, start, end
+        # Implementar la creación del grafo a partir del laberinto
+        return None
