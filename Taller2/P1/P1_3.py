@@ -1,7 +1,7 @@
 import os, sys
 project_path = os.path.dirname(__file__)
 sys.path.append(project_path)
-from P1_MazeLoader import MazeLoader
+from Taller2.P1.P1_MazeLoader_3 import MazeLoader
 
 
 def study_case_1():
@@ -31,4 +31,6 @@ def study_case_3():
 
 
 if __name__ == '__main__':
-    study_case_1()
+    laberynth_3 = study_case_3()
+
+

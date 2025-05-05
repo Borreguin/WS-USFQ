@@ -1,4 +1,3 @@
-
 def define_color(cell):
     if cell == '#':
         return 'black'
@@ -8,3 +7,5 @@ def define_color(cell):
         return 'green'
     elif cell == 'S':   # Salida
         return 'red'
+    elif cell == '.':   # Camino recorrido por el algoritmo
+        return 'blue'
