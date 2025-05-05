@@ -1,8 +1,8 @@
 import os, sys
 project_path = os.path.dirname(__file__)
 sys.path.append(project_path)
-from P1_MazeLoader import MazeLoader
-from P1_util import define_color
+from P1_MazeLoader_2 import MazeLoader
+from P1_util_2 import define_color
 
 import networkx as nx
 import matplotlib.pyplot as plt
