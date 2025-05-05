@@ -45,10 +45,10 @@ En el laberinto 1 notamos que:
 Es un laberinto simple, o sea un grafo pequeño, por lo que no vale la pena sobrecargar computacionalmente al calcular A* (heurística) porque no da una ganancia significativa en eficiencia. Por lo tanto, Dijkstra encuentra la mejor solución al ser ligeramente más rápido. 
 
 En el laberinto 2 notamos que: 
-Quizás por la simplicidad del laberinto no hay gran diferencia, dado que el camino encontrado tiene la misma distancia para ambos algoritmos. El A* fue el más rápido, lo que puede explicarse por el uso de heurística con distancia Manhattan. Djikstra, al ser un algoritmo voraz que no usa heurística, puede haber evaluado nodos innecesarios. 
+Quizás por la simplicidad del laberinto no hay gran diferencia, dado que el camino encontrado tiene la misma distancia para ambos algoritmos. El A* fue el más rápido, lo que puede explicarse por el uso de heurística con distancia Manhattan. Dijkstra, al ser un algoritmo voraz que no usa heurística, puede haber evaluado nodos innecesarios. 
 
 En el laberinto 3 notamos que: 
-A pesar de lo que se hubiera esperado, el algoritmo Dijkstra fue el más rápido. Ambos algoritmos encontraron el camino con la misma distancia. Gracias a un poco de investigación más profunda, podemos suponer que esto se debe a que el A* debe calcular las heurísticas en cada nodo, para decidir cuál explorar primero, quizás en este caso de laberinto más complejo, el tiempo de cada cálculo se acumuló de manera que resultó un poco más lento que el Djisktra, que no tiene que explorar heurística y evita sobrecarga computacional. Este trade-off es importante tenerlo en cuenta. 
+A pesar de lo que se hubiera esperado, el algoritmo Dijkstra fue el más rápido. Ambos algoritmos encontraron el camino con la misma distancia. Gracias a un poco de investigación más profunda, podemos suponer que esto se debe a que el A* debe calcular las heurísticas en cada nodo, para decidir cuál explorar primero, quizás en este caso de laberinto más complejo, el tiempo de cada cálculo se acumuló de manera que resultó un poco más lento que el Dijkstra, que no tiene que explorar heurística y evita sobrecarga computacional. Este trade-off es importante tenerlo en cuenta. 
 
 ### C. Describir los parámetros del modelo.
 
@@ -107,14 +107,14 @@ Para resolver esto, se añadió un paso entre el recorrido de todas las hormigas
 
 En el 2do caso de estudio se hubiesen visto fallas en todas las iteraciones, pero se realizó la corrección detallada en el literal A antes de empezar con el 2do caso.
 
-Sin embargo, se observó una pecularidad en los caminos que se graficaban en el 2do caso: una vez superados los obstáculos, a pesar de tener un camino recto hacia la meta, el camino seleccionado a menudo presentaba una desviación de 45º que era corregida en el siguiente paso (como andar por los catetos de un triángulo en lugar de recorrer su hipotenusa). Esto se debe a la naturaleza estocástica del modelo, una vez que las hormigas empiezan a caminar por este tipo de caminos, el camino es reforzado debido a la forman en la que el parámetro de las feromonas influye en la caminata de hormigas subsecuentes.
+Sin embargo, se observó una peculiaridad en los caminos que se graficaban en el 2do caso: una vez superados los obstáculos, a pesar de tener un camino recto hacia la meta, el camino seleccionado a menudo presentaba una desviación de 45º que era corregida en el siguiente paso (como andar por los catetos de un triángulo en lugar de recorrer su hipotenusa). Esto se debe a la naturaleza estocástica del modelo, una vez que las hormigas empiezan a caminar por este tipo de caminos, el camino es reforzado debido a la forma en la que el parámetro de las feromonas influye en la caminata de hormigas subsecuentes.
 
 Con el fin de solucionar esto, se puede incrementar el valor del parámetro `beta` del modelo, el cual controla la influencia de la distancia. Para valores más grandes de `beta`, hay una atracción mayor hacia la meta. Los valores de `alpha` y `beta` controlan el balance entre exploración y explotación del modelo.
 
 ### C. Describir los parámetros del modelo.
 
-* start: Las coordinadas de la posición inicial de las hormigas.
-* end: Las coordinadas de la ubicación de la meta.
+* start: Las coordenadas de la posición inicial de las hormigas.
+* end: Las coordenadas de la ubicación de la meta.
 * obstacles: Lista que contiene las coordenadas sobre las cuales las hormigas no pueden moverse.
 * grid_size: El tamaño de la cuadrícula (10x10 en este caso)
 * num_ants: El número de hormigas que actúan en cada iteración.
