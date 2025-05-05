@@ -98,6 +98,8 @@ def astar(maze):
 maze, graph = load_laberynth()
 
 solved_maze_nay = nayfeth(maze)
+for _ in range(20):
+    solved_maze_nay = nayfeth(solved_maze_nay)
 
 solved_maze_astar = astar(maze)
 
