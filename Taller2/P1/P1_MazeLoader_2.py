@@ -3,7 +3,7 @@ import os, sys
 import networkx as nx
 project_path = os.path.dirname(__file__)
 sys.path.append(project_path)
-from Taller2.P1.P1_util_3 import define_color
+from P1_util import define_color
 
 
 class MazeLoader:
@@ -59,19 +59,4 @@ class MazeLoader:
 
     def get_graph(self):
         # Implementar la creación del grafo a partir del laberinto
-        rows, cols = len(self.maze), len(self.maze[0])
-        G = nx.Graph()
-        
-        # Movement directions: up, down, left, right
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-
-        for r in range(rows):
-            for c in range(cols):
-                if self.maze[r][c] != '#':  # Current cell is walkable
-                    for dr, dc in directions:
-                        nr, nc = r + dr, c + dc
-                        # Check neighbor bounds and if it's walkable
-                        if 0 <= nr < rows and 0 <= nc < cols and self.maze[nr][nc] != '#':
-                            G.add_edge((r, c), (nr, nc))
-        
-        return G
+        return None
