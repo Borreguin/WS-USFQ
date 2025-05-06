@@ -6,7 +6,7 @@ sys.path.append(current_dir)
 
 from util import *
 from util_nearest_neighbor import nearest_neighbor
-
+# https://baobabsoluciones.es/blog/2020/10/01/problema-del-viajante/
 
 class TSP:
     def __init__(self, ciudades, distancias, heuristics: List[str]):
