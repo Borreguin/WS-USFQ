@@ -12,7 +12,6 @@ def prepare_data():
     return _df
 
 def plot_by_day(df):
-    import matplotlib.pyplot as plt
     variables = ["co2 ventilation ne", "co2 ventilation sw", "temp. vent ne out", "temp. vent sw out"]
     df.index = pd.to_datetime(df.index)
     df["time"] = df.index.time
