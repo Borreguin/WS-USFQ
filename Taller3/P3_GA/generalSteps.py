@@ -1,7 +1,7 @@
 from random import choice
 
-from Taller4.P1_GA.operation import *
-from Taller4.P1_GA.util import word_distance
+from operation import *
+from util import word_distance
 
 
 # Generar población

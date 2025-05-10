@@ -1,6 +1,6 @@
 import random
-from Taller4.P1_GA.constants import *
-from Taller4.P1_GA.util import *
+from constants import *
+from util import *
 
 
 def parent_selection(_type: ParentSelectionType, population, aptitudes):

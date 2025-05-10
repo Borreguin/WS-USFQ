@@ -1,5 +1,5 @@
-from Taller4.P1_GA.generalSteps import *
-
+#from Taller4.P1_GA.generalSteps import *
+from generalSteps import *
 
 class GA:
     def __init__(self, population, objective, mutation_rate, n_iterations):
@@ -66,5 +66,5 @@ def case_study_2(_objetive):
 
 if __name__ == "__main__":
     objective = "GA Workshop! USFQ"
-    case_study_1(objective)
-    # case_study_2(objetive)
+    #case_study_1(objective)
+    case_study_2(objective)
