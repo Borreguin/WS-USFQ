@@ -160,7 +160,7 @@ def study_nearest_neighbor(n_cities):
 
 def study_case_1():
     # tal vez un loop para probar 10, 20, 30, 40, 50 ciudades?
-    n_cities = 50
+    n_cities = 10
     ciudades, distancias = generar_ciudades_con_distancias(n_cities)
     heuristics = []
     mipgap = 0.05
@@ -202,8 +202,8 @@ def study_case_3():
 if __name__ == "__main__":
     print("Se ha colocado un límite de tiempo de 30 segundos para la ejecución del modelo.")
     # as reference, see nearest neighbor heuristic
-    study_nearest_neighbor(100)
+    #study_nearest_neighbor(100)
     # Solve the TSP problem
-    # study_case_1()
+    study_case_1()
     # study_case_2()
-    study_case_3()
+    #study_case_3()
