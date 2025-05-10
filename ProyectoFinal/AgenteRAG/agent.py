@@ -1,0 +1,2 @@
+# Orquestador: pregunta → recuperación → generación
+
