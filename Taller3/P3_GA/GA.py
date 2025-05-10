@@ -1,4 +1,4 @@
-from Taller4.P1_GA.generalSteps import *
+from Taller3.P3_GA.generalSteps import *
 
 
 class GA:
