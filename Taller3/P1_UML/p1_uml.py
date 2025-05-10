@@ -11,26 +11,6 @@ def prepare_data():
     print(_df.dtypes)
     return _df
 
-def plot_by_day(df):
-    import matplotlib.pyplot as plt
-    variables = ["co2 ventilation ne", "co2 ventilation sw", "temp. vent ne out", "temp. vent sw out"]
-    df.index = pd.to_datetime(df.index)
-    df["time"] = df.index.time
-    df["date"] = df.index.date 
-    for var in variables:
-        plt.figure(figsize=(10, 6))
-        for date, group in df.groupby("date"):
-            plt.plot(group["time"], group[var], label=str(date), alpha=0.7)
-        
-        plt.title(f"{var} por hora (superpuestos por día)")
-        plt.xlabel("Hora del día")
-        plt.ylabel(var)
-        plt.xticks(rotation=45)
-        plt.grid(True)
-        plt.legend(loc="upper right", bbox_to_anchor=(1.15, 1))
-        plt.tight_layout()
-        plt.show()
-
 def plot_data(_df: pd.DataFrame, lb1, lb2, legend):
     import matplotlib.pyplot as plt
     df_to_plot = _df.tail(1000)
@@ -45,6 +25,5 @@ def plot_data(_df: pd.DataFrame, lb1, lb2, legend):
 
 if __name__ == "__main__":
     df = prepare_data()
-    plot_by_day(df)
-    #plot_data(df, lb_V005_vent01_CO2, lb_V022_vent02_CO2, "CO2")
-    #plot_data(df, lb_V006_vent01_temp_out, lb_V023_vent02_temp_out, "Temperature")
+    plot_data(df, lb_V005_vent01_CO2, lb_V022_vent02_CO2, "CO2")
+    plot_data(df, lb_V006_vent01_temp_out, lb_V023_vent02_temp_out, "Temperature")
