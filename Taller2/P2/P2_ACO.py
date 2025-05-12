@@ -11,7 +11,7 @@ class AntColonyOptimization:
         self.num_ants = num_ants
         self.evaporation_rate = evaporation_rate
         self.alpha = alpha
-        self.beta = beta
+        self.beta = beta # alpha y beta ajustan el peso de las feromonas y la heurística.
         self.pheromones = np.ones(grid_size)
         self.best_path = None
 
@@ -21,9 +21,15 @@ class AntColonyOptimization:
         for i in range(-1, 2):
             for j in range(-1, 2):
                 new_x, new_y = pos_x + i, pos_y + j
-                if (0 <= new_x < self.grid_size[0] and 0 <= new_y < self.grid_size[1] and
-                        (new_x, new_y) != position and (new_x, new_y) not in self.obstacles):
-                    neighbors.append((new_x, new_y))
+                if (0 <= new_x < self.grid_size[0] and
+                    0 <= new_y < self.grid_size[1] and
+                    (new_x, new_y) != position and
+                    (new_x, new_y) not in self.obstacles):
+                    # Penalizar vecinos con muchos obstáculos alrededor
+                    num_obstacles = sum((nx, ny) in self.obstacles for nx in range(new_x - 1, new_x + 2) for ny in
+                                        range(new_y - 1, new_y + 2))
+                    if num_obstacles < 3:  # Evitar zonas muy bloqueadas
+                        neighbors.append((new_x, new_y))
         return neighbors
 
     def _select_next_position(self, position, visited):
@@ -49,6 +55,22 @@ class AntColonyOptimization:
     def _deposit_pheromones(self, path):
         for position in path:
             self.pheromones[position[1], position[0]] += 1
+    """
+
+    def _deposit_pheromones(self, path):
+        if len(path) > 1:  # Evitar división por cero
+            distancia_total = self.calcular_distancia_total(path)  # Usar la función existente
+            feromona_value = 1 / distancia_total  # Cuanto menor sea la distancia, mayor depósito
+
+            for position in path:
+                self.pheromones[position[1], position[0]] += feromona_value  # Aplicar refuerzo proporcional
+    """
+    @staticmethod
+    def calcular_distancia_total(camino):
+        distancia_total = 0
+        for i in range(len(camino) - 1):
+            distancia_total += np.linalg.norm(np.array(camino[i]) - np.array(camino[i + 1]))
+        return distancia_total
 
     def find_best_path(self, num_iterations):
         for _ in range(num_iterations):
@@ -56,12 +78,14 @@ class AntColonyOptimization:
             for _ in range(self.num_ants):
                 current_position = self.start
                 path = [current_position]
+                """
                 while current_position != self.end:
                     next_position = self._select_next_position(current_position, path)
                     if next_position is None:
                         break
                     path.append(next_position)
                     current_position = next_position
+<<<<<<< HEAD
 
                 if current_position == self.end:
                     all_paths.append(path)
@@ -70,6 +94,25 @@ class AntColonyOptimization:
                 continue
 
             all_paths.sort(key=lambda x: len(x))
+=======
+                
+                """
+                while current_position != self.end:
+                    next_position = self._select_next_position(current_position, path)
+                    if next_position is None:
+                        # Reiniciar hormiga si queda atrapada
+                        current_position = self.start
+                        path = [current_position]
+                        continue
+                    path.append(next_position)
+                    current_position = next_position
+                all_paths.append(path)
+            # Escoger el mejor camino por su tamaño?
+            # --------------------------
+            #all_paths.sort(key=lambda x: len(x))
+            #best_path = all_paths[0]
+            all_paths.sort(key=lambda r: self.calcular_distancia_total(r))
+>>>>>>> origin/Grupo-5
             best_path = all_paths[0]
 
             self._evaporate_pheromones()
@@ -130,5 +173,14 @@ def study_case_2():
     print("Best path:", aco.best_path)
 
 if __name__ == '__main__':
+    print('\ncaso de estudio 1')
     study_case_1()
+<<<<<<< HEAD
     # study_case_2()
+=======
+    print('\ncaso de estudio 2')
+    study_case_2()
+
+
+
+>>>>>>> origin/Grupo-5
