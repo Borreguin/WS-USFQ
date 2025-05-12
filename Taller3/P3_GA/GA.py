@@ -54,7 +54,7 @@ def case_study_1(_objetive):
     ga.run()
 
 def case_study_2(_objetive):
-    population = generate_population(100, len(_objetive))
+    population = generate_population(103, len(_objetive))
     mutation_rate = 0.01
     n_iterations = 1000
     ga = GA(population, _objetive, mutation_rate, n_iterations)
