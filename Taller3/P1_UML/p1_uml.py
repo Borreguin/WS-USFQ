@@ -7,7 +7,6 @@ def prepare_data():
     data_path = os.path.join(script_path, "data")
     file_path = os.path.join(data_path, "data.csv")
     _df = read_csv_file(file_path)
-    _df['lb_timestamp'] = pd.to_datetime(_df['lb_timestamp'])
     _df.set_index(lb_timestamp, inplace=True)
     print(_df.dtypes)
     return _df
