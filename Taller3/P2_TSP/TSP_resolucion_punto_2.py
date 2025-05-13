@@ -181,7 +181,7 @@ def study_case_1():
     heuristics = []
     mipgap = 0.05
     time_limit = 30
-    tee = False
+    tee = True
     tsp = TSP(ciudades, distancias, heuristics)
     ruta = tsp.encontrar_la_ruta_mas_corta(mipgap, time_limit, tee)
     tsp.plotear_resultado(ruta)
@@ -212,7 +212,7 @@ def study_case_3():
     tsp = TSP(ciudades, distancias, heuristics)
     mipgap = 0.05
     time_limit = 60
-    tee = True
+    tee = False
     ruta = tsp.encontrar_la_ruta_mas_corta(mipgap, time_limit, tee)
     tsp.plotear_resultado(ruta, False)
 

@@ -14,3 +14,5 @@ Windows: https://winglpk.sourceforge.net/
 Linux: apt-get install -y -qq glpk-utils
 
 Mac:  brew install glpk
+
+Link al documento en línea: https://docs.google.com/document/d/1taGgg4YfQtsLu2Xezz5MUfrJnBG1M9te1LZK5k2Gd7w/edit?usp=sharing
