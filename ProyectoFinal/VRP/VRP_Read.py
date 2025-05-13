@@ -1,12 +1,12 @@
 # read VRP data from CSV files
 
 import os
-from ProyectoFinal.VRP.VRP_Gen import plot_vrp
+from VRP_Gen import plot_vrp
 
 script_path = os.path.dirname(os.path.abspath(__file__))
 data_path = os.path.join(script_path, "data")
 
-folder = "large-vrp"
+folder = "small-vrp"
 file_name = "vrp.csv"
 
 file_path = os.path.join(data_path, folder, file_name)
