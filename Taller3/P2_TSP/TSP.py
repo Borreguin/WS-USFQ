@@ -162,7 +162,7 @@ class TSP:
         path.append(path[0])
         distance = calculate_path_distance(self.distancias, path)
         print("Distancia total recorrida:", distance)
-        return path
+        return path, execution_time
 
     def plotear_resultado(self, ruta: List[str], mostrar_anotaciones: bool = True):
         plotear_ruta(self.ciudades, self.distancias, ruta, mostrar_anotaciones)
