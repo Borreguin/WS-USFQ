@@ -25,6 +25,7 @@ def evaluate_aptitude(evaluation_type, individual, objetive):
         return aptitude
 
     if evaluation_type == AptitudeType.BY_DISTANCE:
+        #return word_distance(individual, objetive)
         return word_distance(individual, objetive)
 
     if evaluation_type == AptitudeType.NEW:
@@ -55,6 +56,7 @@ def generate_new_population(_type: NewGenerationType, population, aptitudes, mut
             child1, child2 = crossover(CrossoverType.DEFAULT, parent1, parent2)
             child1 = mutate(MutationType.DEFAULT, child1, mutation_rate)
             child2 = mutate(MutationType.DEFAULT, child2, mutation_rate)
+            # print(len(child1), len(child2))
             new_population.extend([child1, child2])
         return new_population
     if _type == NewGenerationType.MIN_DISTANCE:
@@ -64,6 +66,7 @@ def generate_new_population(_type: NewGenerationType, population, aptitudes, mut
             child1, child2 = crossover(CrossoverType.DEFAULT, parent1, parent2)
             child1 = mutate(MutationType.DEFAULT, child1, mutation_rate)
             child2 = mutate(MutationType.DEFAULT, child2, mutation_rate)
+            # print(len(child1), len(child2))
             new_population.extend([child1, child2])
         return new_population
 
