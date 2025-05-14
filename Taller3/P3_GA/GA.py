@@ -68,7 +68,6 @@ def case_study_2(_objetive):
     ga.run()
 
 def case_study_3(_objetive):
-    # Testing hybrid approach: tournament selection with two-point crossover
     population = generate_population(100, len(_objetive))
     mutation_rate = 0.01
     n_iterations = 1000
@@ -103,13 +102,13 @@ def case_study_4(_objetive):
         ga.run()
 
 def case_study_5(_objetive):
-    population = generate_population(100, len(_objetive))
-    mutation_rate = 0.01
+    population = generate_population(500, len(_objetive))
+    mutation_rate = 0.06
     n_iterations = 1000
     ga = GA(population, _objetive, mutation_rate, n_iterations)
     ga.set_evaluation_type(AptitudeType.BY_DISTANCE)
     ga.set_best_individual_selection_type(BestIndividualSelectionType.MIN_DISTANCE)
-    ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
+    ga.set_new_generation_type(NewGenerationType.TOURNAMENT_TWO_POINT)
     ga.run()
 
 
