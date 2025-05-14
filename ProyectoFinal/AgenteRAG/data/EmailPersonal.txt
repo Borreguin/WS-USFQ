@@ -1,0 +1,27 @@
+Asunto:  Bro... lo de anoche fue una novela  
+De: juanito.montero@patitoec.com  
+Para:  carlos.gomez@patitoec.com  
+ 
+¡Ey bro!  
+Te juro que esto que te voy a contar no es broma (aunque parece sacado de una comedia trágica 
+      ). 
+Ayer en la noche me fui a la fiesta de cumpleaños del primo de Esteban (sí, ese que siempre hace 
+el asado más seco del mundo). No me iba a quedar mucho rato… pero apareció Valentina  (sí, 
+la Valentina      ). No la veía hace semanas, y bro... ya tú sabes. Terminamos conversando toda la 
+noche, bailando, y bueno… se me hizo tarde.  
+Peeeeero aquí viene lo bueno: juraba que había puesto la alarma a las 2:45 a.m. para chequear los 
+servicios... pero parece que le puse "repetir mañana"  en lugar de “una vez”. Resultado: me 
+quedé jato . RONCANDO. Plácidamente. Mientras el servidor de base de datos decidía hacer 
+huelga y la pobre VentadePatos.com se convertía en NadaDePatos.com               
+Según el reporte, hubo tres picos de consumo de RAM  tipo Godzilla, y ni siquiera me di 
+cuenta. 120 usuarios queriendo comprar patos y yo soñando con Valentina. ¡Noooo!          
+Hoy en la mañana, cuando vi los mensajes del grupo de soporte y la cara de don Ernesto, casi me 
+da algo. Se habla de 100K de pérdida , y lo peor… ahora están proponiendo hacer una página de 
+respaldo que vende ¡gansos!        (Ya me veo haciendo el logo: “VentadeGanzos.com – por si los 
+patos fallan”).  
+Nada, bro. Solo quería contarte la verdad antes de que te enteres por el grupo. Y porfa… échame 
+una mano con el backup de logs antes de que me caiga la auditoría      
+Nos vemos en el almuerzo. Hoy me toca comer solo... castigo autoimpuesto         
+Un abrazo,  
+Juanito  
+ 

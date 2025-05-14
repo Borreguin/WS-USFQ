@@ -1,0 +1,52 @@
+Acción de Personal en Contra de Juanito Montero  
+Fecha:  7 de abril de 2025  
+Empleado:  Juanito Montero  
+Departamento:  Monitoreo de Servicios Web  
+Puesto:  Encargado de Monitoreo de Servicios Web  
+Fecha del Incidente:  6 de abril de 2025  
+ 
+Motivo de la Acción de Personal:  
+El día 6 de abril de 2025, el empleado Juanito Montero  incurrió en una serie de fallos en sus 
+responsabilidades relacionadas con el monitoreo de los servicios web de la empresa Patito EC . 
+El incidente fue resultado directo de su falta de supervisión en el turno asignado, lo cual 
+ocasionó la caída del servicio web VentadePatos.com  durante un período de aproximadamente 
+4 horas, afectando a 120 usuarios y causando una pérdida estimada de $100,000  para la empresa.  
+Detalles del Incidente:  
+1. El empleado no activó adecuadamente su sistema de alarmas para realizar el monitoreo a 
+la hora establecida (2:45 a.m.), lo cual resultó en su incapacidad para reaccionar ante el 
+alto consumo de memoria RAM en los servidores durante tres picos críticos.  
+2. La falta de intervención oportuna dejó a la página web fuera de línea, impactando 
+gravemente la disponibilidad del servicio y afectando la operación de la empresa.  
+3. Además, el empleado no cumplió con los protocolos de respaldo y revisión durante los 
+turnos nocturnos, lo que evidenció una deficiencia en el cumplimiento de sus funciones.  
+ 
+Acciones Disciplinarias:  
+1. Advertencia escrita formal : Se le comunica de manera formal que su conducta no fue 
+adecuada y que esta acción de negligencia no será tolerada en el futuro. Se le recuerda la 
+importancia de cumplir con sus responsabilidades y de seguir los protocolos establecidos 
+para el monitoreo d e servicios.  
+2. Suspensión temporal sin goce de sueldo : Debido a la magnitud del incidente y el 
+impacto negativo que tuvo en la empresa, Juanito Montero será suspendido de sus 
+funciones por un período de 2 días . Durante este tiempo, se revisarán sus competencias y 
+su compromiso con las tareas asignadas.  
+3. Capacitación obligatoria en protocolos de emergencia y monitoreo : El empleado 
+deberá asistir a un curso de capacitación sobre gestión de incidentes , monitoreo de 
+sistemas críticos  y respuestas a emergencias , con el objetivo de mejorar su 
+conocimiento y rendimiento en situaciones similares en el futuro.  
+4. Revisión de desempeño : Su desempeño será evaluado de manera más estricta en los 
+próximos 3 meses. En caso de que se vuelva a incurrir en una falta de esta magnitud, se considerarán otras medidas más severas, incluidas posibles sanciones adicionales o 
+incluso la terminación del contrato laboral.  
+ 
+Conclusión:  
+Esta acción de personal busca corregir el comportamiento negligente de Juanito Montero y 
+prevenir futuros incidentes similares. El objetivo es garantizar que todos los empleados cumplan 
+con los estándares de desempeño de la empresa, especialmente en áreas tan críticas como el 
+monitoreo de sistemas que afectan directamente a la disponibilidad de servicios y la operación de 
+la empresa.  
+ 
+Firmado:  
+Recursos Humanos:  
+Carlos Gomez  
+carlos.gomez@patitoec.com  
+Empleado:  Juanito Montero  
+ 
