@@ -40,8 +40,9 @@ class AntColonyOptimization:
             if neighbor not in visited:
                 pheromone = self.pheromones[neighbor[1], neighbor[0]]
                 heuristic = 1 / (np.linalg.norm(np.array(neighbor) - np.array(self.end)) + 0.1)
-                probabilities.append((neighbor, pheromone ** self.alpha * heuristic ** self.beta))
-                total += pheromone ** self.alpha * heuristic ** self.beta
+                score = pheromone ** self.alpha * heuristic ** self.beta
+                probabilities.append((neighbor, score))
+                total += score
         if not probabilities:
             return None
         probabilities = [(pos, prob / total) for pos, prob in probabilities]
@@ -84,6 +85,16 @@ class AntColonyOptimization:
                         break
                     path.append(next_position)
                     current_position = next_position
+<<<<<<< HEAD
+
+                if current_position == self.end:
+                    all_paths.append(path)
+
+            if not all_paths:
+                continue
+
+            all_paths.sort(key=lambda x: len(x))
+=======
                 
                 """
                 while current_position != self.end:
@@ -101,16 +112,16 @@ class AntColonyOptimization:
             #all_paths.sort(key=lambda x: len(x))
             #best_path = all_paths[0]
             all_paths.sort(key=lambda r: self.calcular_distancia_total(r))
+>>>>>>> origin/Grupo-5
             best_path = all_paths[0]
 
             self._evaporate_pheromones()
             self._deposit_pheromones(best_path)
 
-            if self.best_path is None or len(best_path) <= len(self.best_path):
+            if self.best_path is None or len(best_path) < len(self.best_path):
                 self.best_path = best_path
-            # --------------------------
 
-    def plot(self):
+    def plot(self, save_as=None):
         cmap = LinearSegmentedColormap.from_list('pheromone', ['white', 'green', 'red'])
         plt.figure(figsize=(8, 8))
         plt.imshow(self.pheromones, cmap=cmap, vmin=np.min(self.pheromones), vmax=np.max(self.pheromones))
@@ -127,7 +138,11 @@ class AntColonyOptimization:
         plt.title('Ant Colony Optimization')
         plt.legend()
         plt.grid(True)
-        plt.show()
+        if save_as:
+            plt.savefig(save_as, dpi=150)
+            print(f"Imagen guardada como {save_as}")
+        else:
+            plt.show()
 
 def study_case_1():
     print("Start of Ant Colony Optimization - First Study Case")
@@ -136,26 +151,36 @@ def study_case_1():
     obstacles = [(1, 2), (2, 2), (3, 2)]
     aco = AntColonyOptimization(start, end, obstacles)
     aco.find_best_path(100)
-    aco.plot()
+    aco.plot(save_as="aco_case1.png")
     print("End of Ant Colony Optimization")
-    print("Best path: ", aco.best_path)
+    print("Best path:", aco.best_path)
 
 def study_case_2():
     print("Start of Ant Colony Optimization - Second Study Case")
     start = (0, 0)
     end = (4, 7)
     obstacles = [(0, 2), (1, 2), (2, 2), (3, 2)]
-    aco = AntColonyOptimization(start, end, obstacles)
+    aco = AntColonyOptimization(
+        start, end, obstacles,
+        num_ants=30,
+        evaporation_rate=0.05,
+        alpha=1.0,
+        beta=10
+    )
     aco.find_best_path(100)
-    aco.plot()
+    aco.plot(save_as="aco_case2.png")
     print("End of Ant Colony Optimization")
-    print("Best path: ", aco.best_path)
+    print("Best path:", aco.best_path)
 
 if __name__ == '__main__':
     print('\ncaso de estudio 1')
     study_case_1()
+<<<<<<< HEAD
+    # study_case_2()
+=======
     print('\ncaso de estudio 2')
     study_case_2()
 
 
 
+>>>>>>> origin/Grupo-5
