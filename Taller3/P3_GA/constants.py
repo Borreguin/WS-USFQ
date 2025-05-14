@@ -17,7 +17,6 @@ class ParentSelectionType(str, Enum):
 
 class MutationType(str, Enum):
     DEFAULT = 'default'
-    ADAPTIVE = 'adaptive'
     NEW = 'new'
 
 class CrossoverType(str, Enum):
@@ -40,5 +39,4 @@ class NewGenerationType(str, Enum):
     TOURNAMENT = 'tournament'
     TWO_POINT_CROSSOVER = 'two_point_crossover'
     TOURNAMENT_TWO_POINT = 'tournament_two_point'  # New hybrid approach
-    ADAPTIVE = 'adaptive'  # Adaptive mutation rate approach
     NEW = 'new'
