@@ -1,0 +1,50 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Leer el CSV
+df = pd.read_csv(r'\Users\Soporte-NuCom\Desktop\DOCUMENTOS VARIOS\DRAGON\MATERIAS\INTELIGENCIA ARTIFICIAL\Talleres\Taller3\P1_UML\data\data.csv', sep=';')
+
+# Convertir la columna de fecha y hora a un objeto datetime
+df['timestamp'] = pd.to_datetime(df['timestamp'], format="%d.%m.%Y %H:%M")
+df['hour'] = df['timestamp'].dt.hour
+
+# Realiza un EDA básico
+print("Primeras filas del DataFrame:")
+print(df.head())
+print("\nDescripción del DataFrame:")
+print(df.describe())
+print("\nInformación del DataFrame:")
+print(df.info())
+print("\nValores nulos en el DataFrame:")
+print(df.isnull().sum())
+print("\nValores únicos por columna:")
+print(df.nunique())
+
+
+# Variables a graficar
+variables = [
+    ('V005_vent01_CO2', 'CO2 Ventilation NE'),
+    ('V022_vent02_CO2', 'CO2 Ventilation SW'),
+    ('V006_vent01_temp_out', 'Temp. Vent. NE Out'),
+    ('V023_vent02_temp_out', 'Temp. Vent. SW Out')
+]
+
+# Configuración general de estilo
+sns.set(style="whitegrid")
+
+# Graficar un boxplot mejorado por variable
+for var, label in variables:
+    plt.figure(figsize=(14, 5))
+    sns.boxplot(data=df, x='hour', y=var, palette="Spectral", fliersize=0)  # Oculta outliers por defecto
+    sns.stripplot(data=df, x='hour', y=var, color='black', size=2, jitter=0.25, alpha=0.4)  # Muestra outliers con dispersión
+    plt.title(f'Distribución por hora: {label}', fontsize=14)
+    plt.xlabel("Hora del día", fontsize=12)
+    plt.ylabel(label, fontsize=12)
+    plt.xticks(range(0, 24), fontsize=10)
+    plt.yticks(fontsize=10)
+    plt.tight_layout()
+    plt.grid(True, axis='y', linestyle='--', alpha=0.7)
+    plt.show()
+
+

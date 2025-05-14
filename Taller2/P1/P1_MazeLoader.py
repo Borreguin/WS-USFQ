@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import os, sys
 project_path = os.path.dirname(__file__)
 sys.path.append(project_path)
-from Taller2.P1.P1_util import define_color
 
+from P1_util import define_color
 
 class MazeLoader:
     def __init__(self, filename):
@@ -43,3 +43,31 @@ class MazeLoader:
     def get_graph(self):
         # Implementar la creación del grafo a partir del laberinto
         return None
+
+import networkx as nx
+
+def get_graph(self):
+        if self.maze is None:
+            raise ValueError("Maze not loaded")
+
+        G = nx.Graph()
+        height = len(self.maze)
+        width = len(self.maze[0])
+
+        for y in range(height):
+            for x in range(width):
+                current_cell = self.maze[y][x]
+                if current_cell in [' ', 'E', 'S']:
+                    current_node = (x, y)
+                    G.add_node(current_node)
+
+                    # Verificar vecinos: derecha y abajo (evita duplicar aristas)
+                    for dx, dy in [(1, 0), (0, 1)]:
+                        nx_, ny_ = x + dx, y + dy
+                        if 0 <= nx_ < width and 0 <= ny_ < height:
+                            neighbor_cell = self.maze[ny_][nx_]
+                            if neighbor_cell in [' ', 'E', 'S']:
+                                neighbor_node = (nx_, ny_)
+                                G.add_edge(current_node, neighbor_node)
+
+        return G
