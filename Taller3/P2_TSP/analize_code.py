@@ -31,7 +31,7 @@ def part_A():
 def part_B():
     heuristics = [['limitar_funcion_objetivo'], []]
     for i in heuristics:
-        _ = study_case(heuristics= i, n_cities=70, plot=True)
+        _ = study_case(heuristics= i, n_cities=70, plot=False)
 
 
 part = 'B'
@@ -40,3 +40,5 @@ if part == 'A':
     part_A()
 elif part == 'B':
     part_B()
+
+study_nearest_neighbor(50)
