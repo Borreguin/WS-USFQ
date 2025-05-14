@@ -13,3 +13,31 @@ embeddings/: vectores generados (opcional)
 
 Requisitos en requirements.txt
 
+
+## Pasos realizados 
+
+- Creacion de un ambiente virtua
+
+``` 
+python -m venv venv 
+```
+
+- Activar ambiente virtual
+
+``` 
+.\venv\Scripts\Activate 
+```
+
+- Instalar las dependencias dentro del ambiente: (requirements.txt)
+
+- Instalar Ollama
+    - Instalar un modelo: https://ollama.com/library
+        - llama 3.2
+        
+    - Instalar unmodelo embebido (para los documentos pdf)
+        - mxbai-embed-large
+
+- Ejecutar app
+```
+python ./main.py
+```
