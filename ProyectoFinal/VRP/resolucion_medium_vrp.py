@@ -327,7 +327,7 @@ def main():
     total_demand = sum(demands.values())
     min_vehicles = math.ceil(total_demand / 150)
     print(
-        f"El problema se vuelve inviable cuando se requieren más de {min_vehicles-1} vehículos")
+        f"El problema se vuelve inviable cuando se requieren menos de {min_vehicles-1} vehículos")
 
     # Flota ideal para capacidad de 150
     print("\nFlota ideal para capacidad de 150:")
@@ -339,4 +339,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print("Modelo híbrido - vecinos cercanos y pyomo")
     main()
