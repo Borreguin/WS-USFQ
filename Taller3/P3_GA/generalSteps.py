@@ -1,7 +1,7 @@
 from random import choice
 
-from Taller4.P1_GA.operation import *
-from Taller4.P1_GA.util import word_distance
+from operation import *
+from util import word_distance
 
 
 # Generar población
@@ -66,7 +66,33 @@ def generate_new_population(_type: NewGenerationType, population, aptitudes, mut
             child2 = mutate(MutationType.DEFAULT, child2, mutation_rate)
             new_population.extend([child1, child2])
         return new_population
-
+    if _type == NewGenerationType.TOURNAMENT:
+        new_population = []
+        for _ in range(len(population)//2):
+            parent1, parent2 = parent_selection(ParentSelectionType.TOURNAMENT, population, aptitudes)
+            child1, child2 = crossover(CrossoverType.DEFAULT, parent1, parent2)
+            child1 = mutate(MutationType.DEFAULT, child1, mutation_rate)
+            child2 = mutate(MutationType.DEFAULT, child2, mutation_rate)
+            new_population.extend([child1, child2])
+        return new_population
+    if _type == NewGenerationType.TWO_POINT_CROSSOVER:
+        new_population = []
+        for _ in range(len(population)//2):
+            parent1, parent2 = parent_selection(ParentSelectionType.DEFAULT, population, aptitudes)
+            child1, child2 = crossover(CrossoverType.TWO_POINT, parent1, parent2)
+            child1 = mutate(MutationType.DEFAULT, child1, mutation_rate)
+            child2 = mutate(MutationType.DEFAULT, child2, mutation_rate)
+            new_population.extend([child1, child2])
+        return new_population
+    if _type == NewGenerationType.TOURNAMENT_TWO_POINT:
+        new_population = []
+        for _ in range(len(population)//2):
+            parent1, parent2 = parent_selection(ParentSelectionType.TOURNAMENT, population, aptitudes)
+            child1, child2 = crossover(CrossoverType.TWO_POINT, parent1, parent2)
+            child1 = mutate(MutationType.DEFAULT, child1, mutation_rate)
+            child2 = mutate(MutationType.DEFAULT, child2, mutation_rate)
+            new_population.extend([child1, child2])
+        return new_population
     if _type == NewGenerationType.NEW:
         print("implement here the new generation")
         return None

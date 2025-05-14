@@ -12,14 +12,17 @@ class AptitudeType(str, Enum):
 class ParentSelectionType(str, Enum):
     DEFAULT = 'default'
     MIN_DISTANCE = 'min_distance'
+    TOURNAMENT = 'tournament'
     NEW = 'new'
 
 class MutationType(str, Enum):
     DEFAULT = 'default'
+    ADAPTIVE = 'adaptive'
     NEW = 'new'
 
 class CrossoverType(str, Enum):
     DEFAULT = 'default'
+    TWO_POINT = 'two_point'
     NEW = 'new'
 
 class SelectionType(str, Enum):
@@ -34,4 +37,8 @@ class BestIndividualSelectionType(str, Enum):
 class NewGenerationType(str, Enum):
     DEFAULT = 'default'
     MIN_DISTANCE = 'min_distance'
+    TOURNAMENT = 'tournament'
+    TWO_POINT_CROSSOVER = 'two_point_crossover'
+    TOURNAMENT_TWO_POINT = 'tournament_two_point'  # New hybrid approach
+    ADAPTIVE = 'adaptive'  # Adaptive mutation rate approach
     NEW = 'new'

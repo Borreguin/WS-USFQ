@@ -1,4 +1,8 @@
-from Taller4.P1_GA.generalSteps import *
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from generalSteps import *
 
 
 class GA:
@@ -63,8 +67,62 @@ def case_study_2(_objetive):
     ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
     ga.run()
 
+def case_study_3(_objetive):
+    # Testing hybrid approach: tournament selection with two-point crossover
+    population = generate_population(100, len(_objetive))
+    mutation_rate = 0.01
+    n_iterations = 1000
+    ga = GA(population, _objetive, mutation_rate, n_iterations)
+    ga.set_evaluation_type(AptitudeType.BY_DISTANCE) 
+    ga.set_best_individual_selection_type(BestIndividualSelectionType.MIN_DISTANCE) 
+    ga.set_new_generation_type(NewGenerationType.TOURNAMENT_TWO_POINT) 
+    ga.run()
+
+def new_case_study_3(_objetive):
+    population = generate_population(100, len(_objetive))
+    mutation_rates = [0.02, 0.07, 0.1]
+    n_iterations = 1000
+    for mutation_rate in mutation_rates:
+        ga = GA(population, _objetive, mutation_rate, n_iterations)
+        ga.set_evaluation_type(AptitudeType.BY_DISTANCE)
+        ga.set_best_individual_selection_type(BestIndividualSelectionType.MIN_DISTANCE)
+        ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
+        ga.run()
+
+def case_study_4(_objetive):
+    my_population = [120, 150, 200, 250]
+    for pop in my_population:
+        print(f"Population size: {pop}")
+        population = generate_population(pop, len(_objetive))
+        mutation_rate = 0.01
+        n_iterations = 1000
+        ga = GA(population, _objetive, mutation_rate, n_iterations)
+        ga.set_evaluation_type(AptitudeType.BY_DISTANCE)
+        ga.set_best_individual_selection_type(BestIndividualSelectionType.MIN_DISTANCE)
+        ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
+        ga.run()
+
+def case_study_5(_objetive):
+    population = generate_population(100, len(_objetive))
+    mutation_rate = 0.01
+    n_iterations = 1000
+    ga = GA(population, _objetive, mutation_rate, n_iterations)
+    ga.set_evaluation_type(AptitudeType.BY_DISTANCE)
+    ga.set_best_individual_selection_type(BestIndividualSelectionType.MIN_DISTANCE)
+    ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
+    ga.run()
+
 
 if __name__ == "__main__":
     objective = "GA Workshop! USFQ"
-    case_study_1(objective)
-    # case_study_2(objetive)
+    #case_study_1(objective)
+    
+    #case_study_2(objective)
+    
+    #case_study_3(objective)
+    
+    #new_case_study_3(objective)
+
+    #case_study_4(objective)
+
+    case_study_5(objective)
