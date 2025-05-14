@@ -79,6 +79,17 @@ class VRP:
                 total_distance += self.distancias[route[i], route[i+1]]
         return total_distance
 
+    def format_route_with_demands(self, route):
+        """Formatea una ruta mostrando ID cliente y demanda"""
+        formatted_route = []
+        for node in route:
+            if node == 0:  # Depósito
+                formatted_route.append(f"Depósito (0)")
+            else:
+                formatted_route.append(
+                    f"Cliente {node} (d:{self.demands[node]})")
+        return formatted_route
+
     def find_min_vehicles(self, vehicle_capacity):
         """Encuentra el mínimo número de vehículos necesarios usando solo la heurística"""
         total_demand = sum(self.demands.values())
@@ -149,7 +160,8 @@ def main():
         print(f"Número mínimo de vehículos necesarios: {num_vehicles}")
         print("Rutas encontradas:")
         for i, route in enumerate(routes):
-            print(f"Vehículo {i+1}: {route}")
+            formatted_route = vrp.format_route_with_demands(route)
+            print(f"Vehículo {i+1}: {formatted_route}")
         total_distance = vrp.calculate_routes_distance(routes)
         print(f"Distancia total: {total_distance:.2f}")
     else:
@@ -162,7 +174,8 @@ def main():
         print(f"Capacidad mínima requerida: {capacity}")
         print("Rutas encontradas:")
         for i, route in enumerate(routes):
-            print(f"Vehículo {i+1}: {route}")
+            formatted_route = vrp.format_route_with_demands(route)
+            print(f"Vehículo {i+1}: {formatted_route}")
         total_distance = vrp.calculate_routes_distance(routes)
         print(f"Distancia total: {total_distance:.2f}")
     else:
@@ -173,7 +186,7 @@ def main():
     total_demand = sum(demands.values())
     min_vehicles = math.ceil(total_demand / 150)
     print(
-        f"El problema se vuelve inviable cuando se requieren más de {min_vehicles-1} vehículos")
+        f"El problema se vuelve inviable cuando se requieren menos de {min_vehicles-1} vehículos")
 
     # Flota ideal para capacidad de 150
     print("\nFlota ideal para capacidad de 150:")
@@ -182,7 +195,8 @@ def main():
         print(f"Número ideal de vehículos: {num_vehicles}")
         print("Rutas encontradas:")
         for i, route in enumerate(routes):
-            print(f"Vehículo {i+1}: {route}")
+            formatted_route = vrp.format_route_with_demands(route)
+            print(f"Vehículo {i+1}: {formatted_route}")
         total_distance = vrp.calculate_routes_distance(routes)
         print(f"Distancia total: {total_distance:.2f}")
     else:
@@ -190,4 +204,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print("Modelo heurístico - solo vecinos cercanos")
     main()
