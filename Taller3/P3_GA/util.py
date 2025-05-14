@@ -1,21 +1,13 @@
 from typing import List
 
 
-def word_to_array(word: str):
-    return [ord(w) for w in word]
+def distance(s1: str, s2: str) -> int:
+    if len(s1) != len(s2):
+        raise ValueError("Las cadenas deben tener la misma longitud.")
+    return sum(1 for a, b in zip(s1, s2) if a != b)
 
-# Algo no está bien con esta función de distancia
-def distance(list1:List[int], list2:List[int]):
-    acc = 0
-    for e1, e2 in zip(list1, list2):
-        acc += (e1 - e2)
-    n_size = min(len(list1), len(list2))
-    if n_size == 0:
-        return None
-    return acc + (len(list1) - len(list2))
-
-def word_distance(word1:str, word2:str):
-    return distance(word_to_array(word1), word_to_array(word2))
+def word_distance(word1: str, word2: str) -> int:
+    return distance(word1, word2)
 
 def choose_best_individual_by_distance(population, aptitudes):
     best_individual = population[0]
@@ -26,10 +18,14 @@ def choose_best_individual_by_distance(population, aptitudes):
             best_individual = ind
     return best_individual
 
-
+# distancia euclideana con strings
+#def euclidean_distance(s1: str, s2: str) -> float:
+    #if len(s1) != len(s2):
+        #raise ValueError("Strings must be of the same length")
+    #return sum((ord(a) - ord(b)) ** 2 for a, b in zip(s1, s2)) ** 0.5
 
 # print(word_distance("abc", "abc"))
 # print(word_distance("abc", "abd"))
-# print(word_distance("abc", "abz"))
+# print(euclidean_distance("abh", "abz"))
 # print(word_distance("abc", "cba"))
 # print(word_distance("abc", "cbad"))
