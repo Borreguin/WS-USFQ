@@ -1,7 +1,7 @@
 from random import choice
 
-from Taller4.P1_GA.operation import *
-from Taller4.P1_GA.util import word_distance
+from Taller3.P3_GA.operation import *
+from Taller3.P3_GA.util import word_distance
 
 
 # Generar población
@@ -22,14 +22,19 @@ def evaluate_aptitude(evaluation_type, individual, objetive):
         for i in range(len(individual)):
             if individual[i] == objetive[i]:
                 aptitude += 1
-        return aptitude
+        return aptitude  # maximizar aptitud (coincidencia)
 
     if evaluation_type == AptitudeType.BY_DISTANCE:
-        return word_distance(individual, objetive)
+        return word_distance(individual, objetive)  # minizar distancia
 
     if evaluation_type == AptitudeType.NEW:
-        print("implement here the new evaluation")
-        return 0
+        #print("implement here the new evaluation")
+        #return 0
+        lev_distancia = distancia_lev(individual, objetive)
+        match_score = sum(1 for i in range(min(len(individual), len(objetive))) if individual[i] == objetive[i])
+        return match_score - lev_distance
+
+    return None
 
 # Selección del mejor individuo
 def select_best_individual(_type: BestIndividualSelectionType, population, aptitudes):
@@ -42,8 +47,14 @@ def select_best_individual(_type: BestIndividualSelectionType, population, aptit
         return population[aptitudes.index(best_aptitude)], best_aptitude
 
     if _type == BestIndividualSelectionType.NEW:
-        print("implement here the new best individual selection")
-        return None, None
+        #print("implement here the new best individual selection")
+        #return None, None
+        # Seleccion por ranking
+        ranked_candidates = sorted(zip(population, aptitudes), key=lambda x: x[1], reverse=True)
+        best_individual = random.choice(ranked_candidates[:len(ranked_candidates) // 3])
+        return best_individual[0], best_individual[1]
+
+    return None,None
 
 def generate_new_population(_type: NewGenerationType, population, aptitudes, mutation_rate):
     if _type == NewGenerationType.DEFAULT:
@@ -68,5 +79,14 @@ def generate_new_population(_type: NewGenerationType, population, aptitudes, mut
         return new_population
 
     if _type == NewGenerationType.NEW:
-        print("implement here the new generation")
-        return None
+        #print("implement here the new generation")
+        #return None
+        new_population = []
+        for _ in range(len(population) // 2):
+            parent1, parent2 = parent_selection(ParentSelectionType.MIN_DISTANCE, population, aptitudes)
+            child1, child2 = crossover(CrossoverType.DEFAULT, parent1, parent2)
+            child1 = mutate(MutationType.DEFAULT, child1, mutation_rate)
+            child2 = mutate(MutationType.DEFAULT, child2, mutation_rate)
+            new_population.extend([child1, child2])
+        return new_population
+    return None

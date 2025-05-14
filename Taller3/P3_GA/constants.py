@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum # clase de py que  se usa para definir un conjunto de valores constantes
 MY_SEED = 123
 
 all_possible_gens = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !"
