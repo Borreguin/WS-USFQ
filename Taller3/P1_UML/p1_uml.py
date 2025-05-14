@@ -1,5 +1,5 @@
 import os
-from Taller3.P1_UML.p1_uml_util import *
+from p1_uml_util import *
 
 
 def prepare_data():

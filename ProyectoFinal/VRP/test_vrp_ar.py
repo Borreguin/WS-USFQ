@@ -1,4 +1,3 @@
-
 import subprocess
 import re
 from util import *
@@ -6,14 +5,8 @@ from util_nearest_neighbor import nearest_neighbor
 import sys
 import os
 import pyomo.environ as pyo
-subprocess.check_call([sys.executable, "-m", "pip", "install", "pyomo"])
-current_dir = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(current_dir)
 
-# https://baobabsoluciones.es/blog/2020/10/01/problema-del-viajante/
-
-
-class TSP:
+class VRP:
     def __init__(self, ciudades, distancias, heuristics: List[str]):
         self.max_possible_distance = None
         self.min_possible_distance = None
@@ -43,7 +36,7 @@ class TSP:
         print(f"Distancia Total mínima posible: {self.min_possible_distance}")
         print(f"Distancia Total máxima posible: {self.max_possible_distance}")
         print(f"Heurísticas aplicadas: {self.heuristics}")
-
+    
     def encontrar_la_ruta_mas_corta(self, mipgap, time_limit, tee):
         start_time = dt.datetime.now()
 
@@ -51,6 +44,7 @@ class TSP:
 
         cities = list(self.ciudades.keys())
         n_cities = len(cities)
+
 
         # Sets to work with (conjuntos)
         _model.M = pyo.Set(initialize=self.ciudades.keys())
@@ -61,8 +55,7 @@ class TSP:
 
         # Variables
         _model.x = pyo.Var(_model.N, _model.M, within=pyo.Binary)
-        _model.u = pyo.Var(_model.N, bounds=(0, n_cities - 1),
-                           within=pyo.NonNegativeIntegers)
+        _model.u = pyo.Var(_model.N, bounds=(0, n_cities - 1), within=pyo.NonNegativeIntegers)
 
         # Objetive Function: (función objetivo a minimizar)
         def obj_rule(model):
@@ -73,17 +66,15 @@ class TSP:
         # Restricciones
         # Desde cada ciudad exactamente una arista
         def regla_una_entrada_una_salida_por_ciudad_desde(model, city_j):
-            return sum(model.x[i, city_j] for i in model.N if city_j != i) == 1
+            return sum(model.x[i, city_j]  for i in model.N if city_j != i) == 1
 
-        _model.one_way_i_j = pyo.Constraint(
-            _model.M, rule=regla_una_entrada_una_salida_por_ciudad_desde)
+        _model.one_way_i_j = pyo.Constraint(_model.M, rule=regla_una_entrada_una_salida_por_ciudad_desde)
 
         # Hacia cada ciudad exactamente una arista
         def regla_una_entrada_una_salida_por_ciudad_hacia(model, city_i):
             return sum(model.x[city_i, j] for j in model.M if city_i != j) == 1
 
-        _model.one_way_j_i = pyo.Constraint(
-            _model.N, rule=regla_una_entrada_una_salida_por_ciudad_hacia)
+        _model.one_way_j_i = pyo.Constraint(_model.N, rule=regla_una_entrada_una_salida_por_ciudad_hacia)
 
         def rule_formando_path(model, i, j):
             if i != j:
@@ -92,25 +83,15 @@ class TSP:
                 # No se puede ir de una ciudad a la misma
                 return pyo.Constraint.Skip
 
-        _model.complete_path = pyo.Constraint(
-            _model.U, _model.N, rule=rule_formando_path)
+        _model.complete_path = pyo.Constraint(_model.U, _model.N, rule=rule_formando_path)
 
         def rule_asegurar_viaje(model, i, j):
             if i == j:
                 return model.x[i, j] == 0
             return pyo.Constraint.Skip
-        _model.no_self_travel = pyo.Constraint(
-            _model.N, _model.M, rule=rule_asegurar_viaje)
+        _model.no_self_travel = pyo.Constraint(_model.N, _model.M, rule=rule_asegurar_viaje)
 
-        # Heurísticas:
-
-        # Añadiendo limites a la función objetivo como una heurística
-        if "limitar_funcion_objetivo" in self.heuristics:
-            _model.obj_lower_bound = pyo.Constraint(
-                expr=_model.obj >= self.min_possible_distance)
-            _model.obj_upper_bound = pyo.Constraint(
-                expr=_model.obj <= self.max_possible_distance)
-
+        # Heurísticas
         if "vecino_cercano" in self.heuristics:
             def rule_vecino_cercano(model, i, j):
                 if i == j:
@@ -128,6 +109,7 @@ class TSP:
         # Initialize empty set for dynamic constraints (optional)
         # _model.subtour_constraint = pyo.ConstraintList()
 
+
         # Resolver el modelo
         solver = pyo.SolverFactory('glpk')
         solver.options['mipgap'] = mipgap
@@ -142,86 +124,7 @@ class TSP:
         if results.solver.termination_condition == pyo.TerminationCondition.optimal:
             print("Ruta óptima encontrada:")
         else:
-            print(
-                "No se encontró una solución óptima, la siguiente es la mejor solución encontrada:")
+            print("No se encontró una solución óptima, la siguiente es la mejor solución encontrada:")
 
         edges = dict()
-        valid_paths = []
-        for v in _model.component_data_objects(pyo.Var):
-            if v.domain == pyo.Boolean and v.value is not None and v.value > 0:
-                edge = re.search(r'\[(\w\d)*,(\w\d)*]', v.name)
-                city1, city2 = edge.group(1), edge.group(2)
-                key = f"{city1}_{city2}"
-                # Esto evita caer en ciclos cerrados
-                if key not in valid_paths:
-                    valid_paths += [f"{city1}_{city2}", f"{city2}_{city1}"]
-                    edges[city1] = city2
-
-        initial_city = cities[0]
-        path = get_path(edges, initial_city, [])
-        path.append(path[0])
-        distance = calculate_path_distance(self.distancias, path)
-        print("Distancia total recorrida:", distance)
-        return path, execution_time
-
-    def plotear_resultado(self, ruta: List[str], mostrar_anotaciones: bool = True):
-        plotear_ruta(self.ciudades, self.distancias, ruta, mostrar_anotaciones)
-
-
-def study_nearest_neighbor(n_cities):
-    ciudades, distancias = generar_ciudades_con_distancias(n_cities)
-    ruta = nearest_neighbor(ciudades, distancias)
-    plotear_ruta(ciudades, distancias, ruta, True)
-
-
-def study_case_1():
-    # tal vez un loop para probar 10, 20, 30, 40, 50 ciudades?
-    n_cities = 50
-    ciudades, distancias = generar_ciudades_con_distancias(n_cities)
-    heuristics = []
-    mipgap = 0.05
-    time_limit = 30
-    tee = False
-    tsp = TSP(ciudades, distancias, heuristics)
-    ruta = tsp.encontrar_la_ruta_mas_corta(mipgap, time_limit, tee)
-    tsp.plotear_resultado(ruta)
-
-
-def study_case_2():
-    n_cities = 70
-    ciudades, distancias = generar_ciudades_con_distancias(n_cities)
-    # con heuristicas
-    heuristics = ['limitar_funcion_objetivo']
-    # sin heuristicas
-    # heuristics = []
-    tsp = TSP(ciudades, distancias, heuristics)
-    mipgap = 0.2
-    time_limit = 40
-    tee = True
-    ruta = tsp.encontrar_la_ruta_mas_corta(mipgap, time_limit, tee)
-    tsp.plotear_resultado(ruta, False)
-
-
-def study_case_3():
-    n_cities = 100
-    ciudades, distancias = generar_ciudades_con_distancias(n_cities)
-    # con heuristicas
-    heuristics = ['vecino_cercano']
-    # sin heuristicas
-    # heuristics = []
-    tsp = TSP(ciudades, distancias, heuristics)
-    mipgap = 0.05
-    time_limit = 60
-    tee = True
-    ruta = tsp.encontrar_la_ruta_mas_corta(mipgap, time_limit, tee)
-    tsp.plotear_resultado(ruta, False)
-
-
-if __name__ == "__main__":
-    print("Se ha colocado un límite de tiempo de 30 segundos para la ejecución del modelo.")
-    # as reference, see nearest neighbor heuristic
-    study_nearest_neighbor(100)
-    # Solve the TSP problem
-    # study_case_1()
-    # study_case_2()
-    study_case_3()
+        
