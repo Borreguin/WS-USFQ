@@ -1,0 +1,148 @@
+timestamp,pregunta,respuesta
+2025-05-14T14:43:50,¿ Cuál es el orden cronológico de los documemtos?,"Grupo 5 🤖
+
+[ERROR] HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002DD16E496A0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))"
+2025-05-14T14:44:46,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+[ERROR] HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002DD16EC8A50>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))"
+2025-05-14T15:10:53,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+[ERROR] Extra data: line 2 column 1 (char 125)"
+2025-05-14T15:14:21,hola,Grupo 5 ⚠️ No se encontró información relevante en la base de datos.
+2025-05-14T15:16:11,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:14.890335Z"",""message"":{""role"":""assistant"",""content"":""El""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:15.5804974Z"",""message"":{""role"":""assistant"",""content"":"" orden""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:16.3025528Z"",""message"":{""role"":""assistant"",""content"":"" cron""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:16.9969828Z"",""message"":{""role"":""assistant"",""content"":""ológico""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:17.7097869Z"",""message"":{""role"":""assistant"",""content"":"" de""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:18.4496915Z"",""message"":{""role"":""assistant"",""content"":"" los""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:19.1848223Z"",""message"":{""role"":""assistant"",""content"":"" documentos""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:19.9087396Z"",""message"":{""role"":""assistant"",""content"":"" es""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:20.6539769Z"",""message"":{""role"":""assistant"",""content"":"" el""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:21.3872017Z"",""message"":{""role"":""assistant"",""content"":"" siguiente""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:22.0976679Z"",""message"":{""role"":""assistant"",""content"":"":""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:22.797215Z"",""message"":{""role"":""assistant"",""content"":""\n\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:23.5006919Z"",""message"":{""role"":""assistant"",""content"":""1""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:24.2310923Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:24.9683897Z"",""message"":{""role"":""assistant"",""content"":"" Email""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:25.7102095Z"",""message"":{""role"":""assistant"",""content"":""Personal""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:26.4450939Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:27.1546117Z"",""message"":{""role"":""assistant"",""content"":""2""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:27.8794256Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:28.6100721Z"",""message"":{""role"":""assistant"",""content"":"" Diario""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:29.3668893Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:30.0912698Z"",""message"":{""role"":""assistant"",""content"":""Ger""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:30.8310181Z"",""message"":{""role"":""assistant"",""content"":""ente""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:31.5537164Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:32.2790431Z"",""message"":{""role"":""assistant"",""content"":""3""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:33.0255583Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:33.7465267Z"",""message"":{""role"":""assistant"",""content"":"" Acc""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:34.4514211Z"",""message"":{""role"":""assistant"",""content"":""ion""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:35.1396322Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:35.8827859Z"",""message"":{""role"":""assistant"",""content"":""Personal""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:36.5866498Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:37.2921138Z"",""message"":{""role"":""assistant"",""content"":""4""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:38.004772Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:38.7238023Z"",""message"":{""role"":""assistant"",""content"":"" Diario""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:39.4749668Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:40.1937271Z"",""message"":{""role"":""assistant"",""content"":""Ger""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:40.9084993Z"",""message"":{""role"":""assistant"",""content"":""ente""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-14T20:16:41.6222323Z"",""message"":{""role"":""assistant"",""content"":""""},""done_reason"":""stop"",""done"":true,""total_duration"":28198262400,""load_duration"":130974500,""prompt_eval_count"":71,""prompt_eval_duration"":1324465000,""eval_count"":38,""eval_duration"":26739971400}"
+2025-05-14T19:37:20,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:49.3998243Z"",""message"":{""role"":""assistant"",""content"":""El""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:49.694476Z"",""message"":{""role"":""assistant"",""content"":"" orden""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:49.939578Z"",""message"":{""role"":""assistant"",""content"":"" cron""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:50.1449508Z"",""message"":{""role"":""assistant"",""content"":""ológico""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:50.3415952Z"",""message"":{""role"":""assistant"",""content"":"" de""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:50.5739408Z"",""message"":{""role"":""assistant"",""content"":"" los""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:50.8161162Z"",""message"":{""role"":""assistant"",""content"":"" documentos""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:51.1352033Z"",""message"":{""role"":""assistant"",""content"":"" es""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:51.3638032Z"",""message"":{""role"":""assistant"",""content"":"":""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:51.5914041Z"",""message"":{""role"":""assistant"",""content"":""\n\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:51.810446Z"",""message"":{""role"":""assistant"",""content"":""1""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:51.9875339Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:52.2004255Z"",""message"":{""role"":""assistant"",""content"":"" Email""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:52.4325692Z"",""message"":{""role"":""assistant"",""content"":""Personal""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:52.6600135Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:52.9649529Z"",""message"":{""role"":""assistant"",""content"":""2""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:53.1646292Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:53.3622977Z"",""message"":{""role"":""assistant"",""content"":"" Acc""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:53.6763114Z"",""message"":{""role"":""assistant"",""content"":""ion""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:53.8814736Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:54.077504Z"",""message"":{""role"":""assistant"",""content"":""Personal""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:54.2790284Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:54.5035152Z"",""message"":{""role"":""assistant"",""content"":""3""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:54.7092619Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:54.9743873Z"",""message"":{""role"":""assistant"",""content"":"" Diario""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:55.3017515Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:55.5162764Z"",""message"":{""role"":""assistant"",""content"":""Ger""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:55.7574887Z"",""message"":{""role"":""assistant"",""content"":""ente""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:56.0534487Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:56.27456Z"",""message"":{""role"":""assistant"",""content"":""4""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:56.445864Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:56.6401937Z"",""message"":{""role"":""assistant"",""content"":"" Acc""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:56.8433367Z"",""message"":{""role"":""assistant"",""content"":""ion""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:57.0240597Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:57.2175406Z"",""message"":{""role"":""assistant"",""content"":""Personal""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:57.4121381Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:57.6070188Z"",""message"":{""role"":""assistant"",""content"":""5""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:57.7961349Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:57.985902Z"",""message"":{""role"":""assistant"",""content"":"" Diario""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:58.1585667Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:58.3518775Z"",""message"":{""role"":""assistant"",""content"":""Ger""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:58.5280807Z"",""message"":{""role"":""assistant"",""content"":""ente""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:37:58.7092881Z"",""message"":{""role"":""assistant"",""content"":""""},""done_reason"":""stop"",""done"":true,""total_duration"":35989180900,""load_duration"":19204958300,""prompt_eval_count"":71,""prompt_eval_duration"":6694605500,""eval_count"":43,""eval_duration"":9313992500}"
+2025-05-14T19:39:35,¿Cómo se llama la empresa y cuál es el perjuicio ocasionado?,"Grupo 5 🤖
+
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:00.6418033Z"",""message"":{""role"":""assistant"",""content"":""La""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:01.0353268Z"",""message"":{""role"":""assistant"",""content"":"" empresa""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:01.431872Z"",""message"":{""role"":""assistant"",""content"":"" es""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:01.8101008Z"",""message"":{""role"":""assistant"",""content"":"" Pat""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:02.2980738Z"",""message"":{""role"":""assistant"",""content"":""ito""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:02.7877891Z"",""message"":{""role"":""assistant"",""content"":"" EC""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:03.2747869Z"",""message"":{""role"":""assistant"",""content"":"" y""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:03.7664608Z"",""message"":{""role"":""assistant"",""content"":"" el""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:04.2132582Z"",""message"":{""role"":""assistant"",""content"":"" perju""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:04.6706504Z"",""message"":{""role"":""assistant"",""content"":""icio""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:05.1338269Z"",""message"":{""role"":""assistant"",""content"":"" ocas""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:05.648123Z"",""message"":{""role"":""assistant"",""content"":""ionado""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:06.1304267Z"",""message"":{""role"":""assistant"",""content"":"" fue""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:06.6217006Z"",""message"":{""role"":""assistant"",""content"":"" de""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:07.0676343Z"",""message"":{""role"":""assistant"",""content"":"" $""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:07.5211074Z"",""message"":{""role"":""assistant"",""content"":""1""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:08.0002772Z"",""message"":{""role"":""assistant"",""content"":""0""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:08.4851203Z"",""message"":{""role"":""assistant"",""content"":""0""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:08.9597269Z"",""message"":{""role"":""assistant"",""content"":"",""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:09.4652299Z"",""message"":{""role"":""assistant"",""content"":""0""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:09.9095894Z"",""message"":{""role"":""assistant"",""content"":""0""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:10.4065178Z"",""message"":{""role"":""assistant"",""content"":""0""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:10.8368421Z"",""message"":{""role"":""assistant"",""content"":"" por""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:11.2880211Z"",""message"":{""role"":""assistant"",""content"":"" la""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:11.7603274Z"",""message"":{""role"":""assistant"",""content"":"" caída""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:12.1938323Z"",""message"":{""role"":""assistant"",""content"":"" del""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:12.6296375Z"",""message"":{""role"":""assistant"",""content"":"" servicio""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:13.0606802Z"",""message"":{""role"":""assistant"",""content"":"" web""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:13.4795491Z"",""message"":{""role"":""assistant"",""content"":"" Venta""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:13.8869352Z"",""message"":{""role"":""assistant"",""content"":""de""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:14.2824288Z"",""message"":{""role"":""assistant"",""content"":""Pat""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:14.6361949Z"",""message"":{""role"":""assistant"",""content"":""os""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:14.997856Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:15.3550191Z"",""message"":{""role"":""assistant"",""content"":""com""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:15.7058634Z"",""message"":{""role"":""assistant"",""content"":"" durante""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:16.0690084Z"",""message"":{""role"":""assistant"",""content"":"" ""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:16.427412Z"",""message"":{""role"":""assistant"",""content"":""4""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:16.8069193Z"",""message"":{""role"":""assistant"",""content"":"" horas""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:17.1361903Z"",""message"":{""role"":""assistant"",""content"":"",""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:17.4789146Z"",""message"":{""role"":""assistant"",""content"":"" que""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:17.8467259Z"",""message"":{""role"":""assistant"",""content"":"" afect""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:18.1751858Z"",""message"":{""role"":""assistant"",""content"":""ó""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:18.5647964Z"",""message"":{""role"":""assistant"",""content"":"" a""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:19.0256781Z"",""message"":{""role"":""assistant"",""content"":"" ""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:19.4510331Z"",""message"":{""role"":""assistant"",""content"":""1""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:19.8554493Z"",""message"":{""role"":""assistant"",""content"":""2""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:20.23801Z"",""message"":{""role"":""assistant"",""content"":""0""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:20.6839061Z"",""message"":{""role"":""assistant"",""content"":"" usuarios""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:21.1154921Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T00:45:21.5546742Z"",""message"":{""role"":""assistant"",""content"":""""},""done_reason"":""stop"",""done"":true,""total_duration"":344350415600,""load_duration"":32977500,""prompt_eval_count"":2392,""prompt_eval_duration"":323400378900,""eval_count"":50,""eval_duration"":20916391600}"
