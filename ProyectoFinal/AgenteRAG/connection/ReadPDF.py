@@ -20,8 +20,8 @@ for ruta in rutas:
         for i, pagina in enumerate(lector.pages):
             texto = pagina.extract_text()
             contenido[ruta][i] = texto
-            print(f'--- Página {i+1} ---\n{texto}\n')
+            # print(f'--- Página {i+1} ---\n{texto}\n')
 
 
-print(contenido)
+# print(contenido)
 

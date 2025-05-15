@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f718e50d-29bc-4eef-9416-7aa731fc6298" name="Changes" comment="Cambios con openai, answer and key del primer pdf">
-      <change afterPath="$PROJECT_DIR$/../../Taller3/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Taller3/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Taller3/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,21 +21,21 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "DianaCordovaArauz"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DianaCordovaArauz&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Borreguin/WS-USFQ.git",
-    "accountId": "e1d551b8-014f-4307-88a9-bb9ee798debf"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Borreguin/WS-USFQ.git&quot;,
+    &quot;accountId&quot;: &quot;e1d551b8-014f-4307-88a9-bb9ee798debf&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2x43A2XQRaNC2uLifMAR62TPMXZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -48,7 +47,7 @@
     "Python.openai_connection.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "master-Grupo1",
     "last_opened_file_path": "/Users/dicordova/WS-USFQ/ProyectoFinal/AgenteRAG",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -129,6 +128,7 @@
       <option name="presentableId" value="Default" />
       <updated>1747183371594</updated>
       <workItem from="1747183372673" duration="7035000" />
+      <workItem from="1747261506551" duration="371000" />
     </task>
     <task id="LOCAL-00001" summary="Cambios con openai, answer and key del primer pdf">
       <option name="closed" value="true" />
