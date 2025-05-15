@@ -63,8 +63,30 @@ def case_study_2(_objetive):
     ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
     ga.run()
 
+def case_study_3(_objetive):
+    population = generate_population(100, len(_objetive))
+    mutation_rate = 0.05
+    n_iterations = 1000
+    ga = GA(population, _objetive, mutation_rate, n_iterations)
+    ga.set_evaluation_type(AptitudeType.BY_DISTANCE)
+    ga.set_best_individual_selection_type(BestIndividualSelectionType.MIN_DISTANCE)
+    ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
+    ga.run()
+
+def case_study_4(_objetive):
+    population = generate_population(400, len(_objetive))
+    mutation_rate = 0.01
+    n_iterations = 1000
+    ga = GA(population, _objetive, mutation_rate, n_iterations)
+    ga.set_evaluation_type(AptitudeType.BY_DISTANCE)
+    ga.set_best_individual_selection_type(BestIndividualSelectionType.MIN_DISTANCE)
+    ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
+    ga.run()
+
 
 if __name__ == "__main__":
     objective = "GA Workshop! USFQ"
     #case_study_1(objective)
-    case_study_2(objective)
+    #case_study_2(objective)
+    #case_study_3(objective)
+    case_study_4(objective)
