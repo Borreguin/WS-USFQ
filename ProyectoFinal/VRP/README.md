@@ -1,334 +1,67 @@
-# Solución al Problema de Enrutamiento de Vehículos (VRP)
+# Vehicle Routing Problem (VRP)
 
 ## Descripción del Problema
 
-El Problema de Enrutamiento de Vehículos (VRP) consiste en encontrar las rutas óptimas para una flota de vehículos que deben servir a un conjunto de clientes, respetando las restricciones de capacidad y minimizando la distancia total recorrida.
-
-Se han implementado soluciones para tres tamaños de problema:
-- **Small-vrp**: Un problema pequeño que puede resolverse con algoritmos simples.
-- **Medium-vrp**: Un problema de tamaño mediano que requiere un análisis más detallado de las configuraciones de vehículos.
-- **Large-vrp**: Un problema de gran tamaño que requiere metaheurísticas avanzadas.
-
-## Estructura del Proyecto
-
-```
-VRP/
-├── data/                # Datos de los problemas
-│   ├── small-vrp/       # Datos del problema pequeño
-│   ├── medium-vrp/      # Datos del problema mediano
-│   └── large-vrp/       # Datos del problema grande
-├── VRP_Solver.py        # Solucionador básico y funciones comunes
-├── VRP_MediumSolver.py  # Implementación para el problema mediano
-├── VRP_LargeSolver.py   # Implementación con metaheurísticas para el problema grande
-├── VRP_Main.py          # Script principal para ejecutar todas las soluciones
-└── VRP_Optimize.py      # Optimización post-procesamiento con 2-opt
-```
+Una empresa de entregas dispone de una flota de vehículos con capacidad limitada,y debe repartir paquetes a un conjunto de clientes ubicados en distintas direcciones. Todos los vehículos parten desde un único depósito y deben regresar al mismo al finalizar su ruta.
 
-## Algoritmos Implementados
+Cada cliente debe ser visitado exactamente una vez por un solo vehículo, y la cantidad de
+paquetes que transporta un vehículo no debe superar su capacidad.
 
-### 1. Algoritmo del Vecino Más Cercano (Greedy)
-- Implementado en `VRP_Solver.py`
-- Utilizado para los problemas de tamaño pequeño y como inicialización para metaheurísticas.
-- Asigna clientes al vehículo más cercano que tenga capacidad disponible.
+## Objetivo
 
-### 2. Análisis de Capacidad para el Problema Mediano
-- Implementado en `VRP_MediumSolver.py`
-- Evalúa diferentes configuraciones de vehículos con capacidad fija.
-- Determina la capacidad mínima necesaria para exactamente 4 rutas.
-- Analiza cuándo el problema se vuelve inviable con restricciones de capacidad.
-
-### 3. Metaheurísticas para el Problema Grande
-- Implementado en `VRP_LargeSolver.py`
-- **Recocido Simulado (Simulated Annealing)**: Técnica probabilística inspirada en el proceso de recocido en metalurgia.
-- **Búsqueda Tabú (Tabu Search)**: Método de búsqueda metaheurística que utiliza estructuras de memoria para evitar revisitar óptimos locales.
-- Comparación de diferentes configuraciones de flota para determinar la configuración óptima.
+Diseñar las rutas para todos los vehículos de manera que la distancia total recorrida sea mínima, cumpliendo con todas las restricciones de capacidad y asignación.
 
-### 4. Optimización de Rutas Post-Procesamiento
-- Implementado en `VRP_Optimize.py`
-- **Algoritmo 2-opt**: Técnica de mejora local que elimina cruces en las rutas.
-- Aplicado como post-procesamiento a las soluciones generadas por las metaheurísticas.
-- Mejora significativamente la calidad de las soluciones finales.
+## Interpretación
 
-## Ejecución del Código
+El problema está definido por los siguientes entes:
 
-Para ejecutar el solucionador para todas las instancias de problema:
+- **Clientes**: consisten en ubicaciones geográficas en el mapa, que requieren la entrega de uno o más paquetes, representados por su característica de `demanda`. Para obtener la distancia entre clientes se calcula la distancia euclideana entre sus coordenadas.
 
-```bash
-python VRP_Main.py --size all
-```
+- **Vehículos**: agentes que recorren el espacio geográfico, saliendo desde un depósito ubicado en el centro del mapa, y regresando al mismo luego de entregar todos los paquetes. Cada vehículo tiene una capacidad (dada por archivo para el caso *small*, variable para el caso *medium*, y con un valor de 100 para el caso *large*). A fin de satisfacer la demanda de los clientes en su ruta, la suma de las demandas de cada cliente en la ruta no puede exceder la capacidad del vehículo.
 
-Para ejecutar solo un tamaño específico:
+- **Rutas**: la secuencia de paradas en el mapa que recorre cada vehículo, es necesario que cada ruta inicie y termine en el depósito.
 
-```bash
-python VRP_Main.py --size small  # Para small-vrp
-python VRP_Main.py --size medium  # Para medium-vrp
-python VRP_Main.py --size large  # Para large-vrp
-```
+## Estructura
 
-## Parte A: Análisis del Small VRP
+El repositorio provee un dataset estructurado de la siguiente manera:
 
-Para la instancia pequeña del VRP con 10 clientes, he analizado soluciones con 2, 3 y 4 vehículos. Estos son los resultados:
+### Small VRP
 
-### Configuración con 2 Vehículos (Capacidad: 60 cada uno)
+Contiene una lista con las coordenadas y la demanda de 11 clientes ubicados en un plano xy. También contiene 3 archivos para cada uno de los casos a resolver, estos contienen la capacidad de cada uno de los vehículos que se utilizaran para repartir en ese caso particular.
 
-Utilizando el algoritmo del vecino más cercano, obtenemos estas rutas:
-- Vehículo 1: Depósito → Cliente 1 → Cliente 6 → Cliente 2 → Cliente 9 → Cliente 8 → Depósito
-  - Demanda total atendida: 65
-  - Capacidad utilizada: 54.2%
-- Vehículo 2: Depósito → Cliente 3 → Cliente 5 → Cliente 7 → Cliente 4 → Cliente 10 → Depósito
-  - Demanda total atendida: 44
-  - Capacidad utilizada: 36.7%
+### Medium VRP
 
-Distancia total: 581.32
+Igual que el caso anterior contiene una lista con clientes y sus demandas, pero esta vez son 50 clientes. Este caso ya no contiene una lista de vehículos
 
-### Configuración con 3 Vehículos (Capacidad: 40 cada uno)
+### Large VRP
 
-Utilizando el algoritmo del vecino más cercano, obtenemos estas rutas:
-- Vehículo 1: Depósito → Cliente 3 → Cliente 5 → Cliente 7 → Depósito
-  - Demanda total atendida: 16
-  - Capacidad utilizada: 40%
-- Vehículo 2: Depósito → Cliente 1 → Cliente 6 → Cliente 2 → Cliente 9 → Depósito
-  - Demanda total atendida: 45
-  - Capacidad utilizada: 112.5% (infactible)
-- Vehículo 3: Depósito → Cliente 4 → Cliente 10 → Cliente 8 → Depósito
-  - Demanda total atendida: 48
-  - Capacidad utilizada: 120% (infactible)
+También contiene la lista de clientes y demandas. Para este caso existen 100 clientes.
 
-La solución es infactible porque los vehículos no tienen suficiente capacidad para esta distribución.
+## Propuesta
 
-## Parte B: Análisis del Medium VRP
+El objetivo del problema consiste en optimizar las rutas que una flota de vehículos recorrerá con el fin de satisfacer toda la demanda de los clientes de cada caso. Para casos pequeños y medianos el problema no es demasiado complejo, pero para casos grandes se vuelve un poco más difícil explorar minuciosamente el espacio de soluciones para llegar al mínimo global. Nuestra meta es tratar de minimizar la distancia total utilizando una combinación de algoritmos y heurísticas que sean capaces de optimizar a nivel local (restructurando rutas), como a nivel global (iterando con el objetivo de intercambiar segmentos entre rutas). Parte del reto de este problema se debe al restricción dada por la capacidad de cada vehículo.
 
-Para el problema de tamaño mediano, se realizaron los siguientes análisis:
+Con la finalidad de optimizar el caso *Large*, se decidio inicializar el número de vehículos e ir llenando la ruta usando un algoritmo voraz. Esto generaba rutas muy ineficientes, por lo que se trató de complementarlo con 2-opt. Pero esto no dió buenos resultados ya que 2-opt es un algoritmo de búsqueda local, por lo que si las rutas están mal desarrolladas desde su inicialización, 2-opt no podrá reducir la distancia de manera significativa. Debido a esto, se optó por el siguiente método: se realizó una agrupación utilizando K-nearest neighbors a fin de definir grupos de clientes que estén cerca entre sí como parte de una ruta. Posteriormente a esto se aplicó Large Neighborhood Search [1] seguido de crossover exchange con el fin de optimizar globalmente. Una vez hecho esto se utilizaron 2-opt[2] y backward-tracking como métodos para optimizar rutas particulares.
 
-### Configuración con Capacidad Fija (100)
+## Dificultades
 
-Para determinar el número mínimo de vehículos necesarios con capacidad 100:
+- El número de posibles rutas crece exponencialmente con el número de clientes y el tamaño de la flota. Esto hace que el costo computacional para encontrar la solución óptima sea demasiado alto. 
 
-1. **Análisis de Demanda**:
-   - Total de clientes: 50
-   - Demanda total: 498
-   - Demanda promedio por cliente: 9.96
-   - Demanda mínima: 1
-   - Demanda máxima: 20
+- Si la inicialización de las rutas no se realiza con una heurística o algoritmo en mente, se vuelve difícil que métodos de optimización aplicados posteriormente puedan llegar a un espacio óptimo de soluciones, incremenando el costo computacional.
 
-2. **Vehículos Mínimos**:
-   - Matemáticamente se necesitan al menos 5 vehículos (498/100 = 4.98)
-   - La solución con 5 vehículos resultó factible con una distancia total de aproximadamente 1,250
+- La restricción de la capacidad del vehículo de entrega hace que sea necesario verificar durante el proceso de optimización que la demanda de los clientes a lo largo de la ruta no exceda la capacidad del vehículo.
 
-3. **Configuración con 4 Vehículos**:
-   - Con 4 vehículos de capacidad 100, la solución es infactible
-   - No se pueden asignar todos los clientes debido a las restricciones de capacidad
+- Ciertos casos no eran solvibles debido a que la demanda total de los clientes excedía la capacidad total de la flota.
 
-### Capacidad Mínima para 4 Rutas
+- El archivo para el subcaso de 4 vehículos dentro del caso small tenía un error de sintaxis que debe ser corregido antes de leer el archivo.
 
-Para determinar la capacidad mínima necesaria para exactamente 4 rutas:
+- Existe el riesgo de que el proceso se atore en un mínimo local, por lo que se debe implementar métodos que puedan empujar al algoritmo fuera de esa región para que pueda explorar otra región del espacio de soluciones.
 
-1. **Estimación Inicial**:
-   - Capacidad mínima teórica: 125 (498/4 = 124.5)
+- Parte del proceso de determinar la eficiencia de las rutas consiste en inspeccionar visualmente el gráfico para analizar el resultado y ver donde puede haber mejoras.
 
-2. **Búsqueda Binaria**:
-   - Comenzando con capacidad 125, se encontró que la capacidad mínima necesaria es 130
-   - Con capacidad 130, se obtuvo una solución factible con 4 vehículos
-   - Distancia total: aproximadamente 1,320
+- A pesar de que usar el algoritmo de agrupamiento por cercanía para iniciar rutas que recorran clientes que estén cerca entre sí, fue necesario asegurarse de que las rutas generadas no excedan los límites de capacidad de los vehículos.
 
-3. **Utilización de Capacidad**:
-   - Vehículo 1: 96.2% utilizado
-   - Vehículo 2: 97.7% utilizado
-   - Vehículo 3: 93.8% utilizado
-   - Vehículo 4: 95.4% utilizado
+## Bibliografía
 
-### Análisis con Capacidad Máxima 150
-
-Para analizar cuándo el problema se vuelve infactible con capacidad máxima de 150:
-
-1. **Vehículos Mínimos Teóricos**:
-   - Se necesitan al menos 4 vehículos (498/150 = 3.32)
-
-2. **Pruebas de Factibilidad**:
-   - Con 4 vehículos: Solución factible
-   - Con 3 vehículos: Solución factible pero con mayor distancia total
-   - Con 2 vehículos: Solución infactible (insuficiente capacidad total)
-
-3. **Conclusión**:
-   - El problema se vuelve infactible con 2 vehículos de capacidad 150
-   - La configuración óptima es 3 vehículos con capacidad 150, balanceando número de vehículos y distancia total
-
-## Parte C: Análisis del Large VRP
-
-Para el problema de gran tamaño, se implementaron metaheurísticas avanzadas y optimización post-procesamiento:
-
-### Análisis de Demanda
-
-- Total de clientes: 100
-- Demanda total: 1168
-- Demanda promedio por cliente: 11.68
-- Demanda mínima: 3
-- Demanda máxima: 20
-
-### Enfoque Metodológico
-
-La solución al problema de gran tamaño se implementó en tres fases:
-
-1. **Inicialización Greedy**: Construcción inicial de rutas usando el algoritmo del vecino más cercano.
-2. **Metaheurísticas**: Refinamiento de la solución usando algoritmos avanzados.
-3. **Optimización 2-opt**: Post-procesamiento para eliminar cruces en las rutas y mejorar la calidad global.
-
-### Metaheurísticas Implementadas
-
-Se implementaron y compararon dos metaheurísticas:
-
-1. **Recocido Simulado (SA)**:
-   - Permite movimientos a peores soluciones con cierta probabilidad
-   - Probabilidad disminuye a medida que la "temperatura" se reduce
-   - Buena exploración del espacio de búsqueda
-
-2. **Búsqueda Tabú (TS)**:
-   - Mantiene una lista de soluciones visitadas recientemente
-   - Evita ciclos en la búsqueda
-   - Buena explotación de regiones prometedoras
-
-### Configuraciones de Flota Analizadas
-
-Para el problema de gran tamaño se evaluaron dos configuraciones principales:
-
-1. **12 vehículos con capacidad 100**:
-   - Capacidad total: 1200
-   - Mejor distancia antes de optimización: 3830.13
-   - Mejor distancia después de optimización 2-opt: 3657.42
-   - Mejora porcentual: 4.51%
-
-2. **15 vehículos con capacidad 100**:
-   - Capacidad total: 1500
-   - Mejor distancia antes de optimización: 4328.01
-   - Mejor distancia después de optimización 2-opt: 4125.37
-   - Mejora porcentual: 4.68%
-
-### Comparación de Metaheurísticas
-
-En ambas configuraciones, tanto el Recocido Simulado como la Búsqueda Tabú convergieron a soluciones de calidad similar, con diferencias mínimas en la distancia total. Sin embargo, el Recocido Simulado mostró una ligera ventaja en términos de tiempo de ejecución.
-
-### Optimización Post-Procesamiento
-
-La implementación del algoritmo 2-opt como fase de post-procesamiento proporcionó mejoras significativas:
-
-- Eliminación de cruces y patrones ineficientes en las rutas
-- Mejora promedio del 4-7% en la distancia total
-- Mayor beneficio en rutas complejas con muchos clientes
-
-## Conclusiones
-
-1. **Impacto del Tamaño del Problema**:
-   - A medida que aumenta el tamaño del problema, se requieren algoritmos más sofisticados.
-   - Para problemas pequeños, un enfoque greedy es suficiente.
-   - Para problemas grandes, las metaheurísticas son necesarias para encontrar buenas soluciones.
-
-2. **Configuración de la Flota**:
-   - Existe un equilibrio óptimo entre número de vehículos y capacidad.
-   - Menor número de vehículos con mayor capacidad puede reducir costos de capital pero aumentar distancias.
-   - Mayor número de vehículos con menor capacidad puede reducir distancias pero aumentar costos de capital.
-
-3. **Eficiencia Computacional**:
-   - Los algoritmos greedy son rápidos pero pueden producir soluciones subóptimas.
-   - Las metaheurísticas requieren más tiempo de cómputo pero encuentran mejores soluciones.
-   - El tiempo de ejecución aumenta significativamente con el tamaño del problema.
-
-4. **Importancia de la Optimización Post-Procesamiento**:
-   - La optimización 2-opt mejora significativamente la calidad de las rutas
-   - Elimina cruces y patrones ineficientes que son difíciles de evitar durante la construcción inicial
-   - Proporciona mejoras de 4-7% en distancia total sin afectar la factibilidad
-
-Este análisis proporciona una base sólida para la toma de decisiones en problemas reales de enrutamiento de vehículos, permitiendo seleccionar el enfoque y la configuración de flota más adecuados según las características específicas del problema.
-  - Total demand served: 7
-  - Capacity utilized: 70%
-- Vehicle 4 (Capacity 50): Depot → Client 4 → Client 10 → Client 9 → Client 8 → Depot
-  - Total demand served: 56
-  - Capacity utilized: 112% (infeasible)
-
-The solution is infeasible because vehicles 2 and 4 don't have enough capacity.
-
-### Summary for Small VRP
-
-The 2-vehicle configuration provides the most feasible solution with a good balance of capacity utilization. The other configurations would require either increasing the vehicle capacities or using a more sophisticated algorithm to handle the capacity constraints.
-
-## Part B: Medium VRP
-
-For the medium VRP instance with more clients, the analysis was based on various capacity and fleet size combinations:
-
-### B.1: Vehicles with Capacity 100
-
-Using 5 vehicles with capacity 100 each would be sufficient to handle the total demand of 412 units. This provides a good balance between fleet size and route efficiency.
-
-### B.2: Using 4 Routes
-
-To cover the entire medium VRP instance with 4 routes, each vehicle would need a capacity of at least 120 units. With this configuration, the optimal routes are:
-- Vehicle 1: Serves the northwest quadrant clients
-- Vehicle 2: Serves the northeast quadrant clients
-- Vehicle 3: Serves the southwest quadrant clients
-- Vehicle 4: Serves the southeast quadrant clients
-
-### B.3: Vehicles with Capacity 150
-
-With vehicles having a maximum capacity of 150:
-- The problem becomes infeasible when the number of vehicles drops below 3
-- The ideal fleet size would be 3-4 vehicles, balancing operational costs with routing efficiency
-
-## Part C: Large VRP
-
-For the large VRP with 100 clients, a metaheuristic approach is necessary due to the problem size:
-
-### C.1: Análisis con 12 Vehículos
-
-Utilizando 12 vehículos con capacidad 100 para el problema large-vrp:
-
-- **Análisis de rutas**:
-  - Promedio de 8-9 clientes por vehículo
-  - Utilización de capacidad promedio: 97.3%
-  - Distancia total inicial (antes de optimización): 3830.13
-  - Distancia total optimizada: 3657.42
-
-La optimización 2-opt logró eliminar cruces y mejorar significativamente la eficiencia de las rutas, con una reducción de distancia del 4.51%.
-
-### C.2: Análisis con 15 Vehículos
-
-Utilizando 15 vehículos con capacidad 100 para el problema large-vrp:
-
-- **Análisis de rutas**:
-  - Promedio de 6-7 clientes por vehículo
-  - Utilización de capacidad promedio: 77.9%
-  - Distancia total inicial (antes de optimización): 4328.01
-  - Distancia total optimizada: 4125.37
-
-Con más vehículos, hay mayor flexibilidad para la asignación de clientes, pero la distancia total es mayor debido al mayor número de rutas.
-
-### C.3: Comparación y Conclusiones
-
-- La configuración con 12 vehículos proporciona un mejor equilibrio entre número de vehículos y distancia total
-- La optimización post-procesamiento con el algoritmo 2-opt es crucial para obtener rutas de alta calidad
-- Tanto el Recocido Simulado como la Búsqueda Tabú convergen a soluciones similares en calidad
-- El tiempo de resolución aumenta significativamente con el aumento del número de clientes
-
-## Conclusiones Generales
-
-El VRP puede resolverse utilizando diversos enfoques dependiendo del tamaño del problema:
-
-1. **Impacto del Tamaño del Problema**:
-   - A medida que aumenta el tamaño del problema, se requieren algoritmos más sofisticados.
-   - Para problemas pequeños, un enfoque greedy es suficiente.
-   - Para problemas grandes, las metaheurísticas son necesarias para encontrar buenas soluciones.
-
-2. **Configuración de la Flota**:
-   - Existe un equilibrio óptimo entre número de vehículos y capacidad.
-   - Menor número de vehículos con mayor capacidad puede reducir costos de capital pero aumentar distancias.
-   - Mayor número de vehículos con menor capacidad puede reducir distancias pero aumentar costos de capital.
-
-3. **Eficiencia Computacional**:
-   - Los algoritmos greedy son rápidos pero pueden producir soluciones subóptimas.
-   - Las metaheurísticas requieren más tiempo de cómputo pero encuentran mejores soluciones.
-   - El tiempo de ejecución aumenta significativamente con el tamaño del problema.
-
-4. **Compensaciones en el Diseño de Soluciones**:
-   - Distancia total vs. Número de vehículos
-   - Utilización de capacidad vs. Flexibilidad operativa
-   - Tiempo de cómputo vs. Calidad de la solución
-
-Este análisis proporciona una base sólida para la toma de decisiones en problemas reales de enrutamiento de vehículos, permitiendo seleccionar el enfoque y la configuración de flota más adecuados según las características específicas del problema.
+1. https://backend.orbit.dtu.dk/ws/portalfiles/portal/5293785/Pisinger.pdf
+2. https://www.researchgate.net/publication/268981882_Comparison_of_Approximate_Approaches_to_Solving_the_Travelling_Salesman_Problem_and_its_Application_to_UAV_Swarming
