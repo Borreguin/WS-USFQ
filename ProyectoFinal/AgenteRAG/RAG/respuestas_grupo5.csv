@@ -146,3 +146,123 @@ timestamp,pregunta,respuesta
 {""model"":""codegemma"",""created_at"":""2025-05-15T00:45:20.6839061Z"",""message"":{""role"":""assistant"",""content"":"" usuarios""},""done"":false}
 {""model"":""codegemma"",""created_at"":""2025-05-15T00:45:21.1154921Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
 {""model"":""codegemma"",""created_at"":""2025-05-15T00:45:21.5546742Z"",""message"":{""role"":""assistant"",""content"":""""},""done_reason"":""stop"",""done"":true,""total_duration"":344350415600,""load_duration"":32977500,""prompt_eval_count"":2392,""prompt_eval_duration"":323400378900,""eval_count"":50,""eval_duration"":20916391600}"
+2025-05-14T20:28:49,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:09.5521613Z"",""message"":{""role"":""assistant"",""content"":""El""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:09.8163334Z"",""message"":{""role"":""assistant"",""content"":"" orden""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:10.1162795Z"",""message"":{""role"":""assistant"",""content"":"" cron""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:10.3912314Z"",""message"":{""role"":""assistant"",""content"":""ológico""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:10.7530415Z"",""message"":{""role"":""assistant"",""content"":"" de""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:10.9932774Z"",""message"":{""role"":""assistant"",""content"":"" los""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:11.234388Z"",""message"":{""role"":""assistant"",""content"":"" documentos""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:11.4853068Z"",""message"":{""role"":""assistant"",""content"":"" es""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:11.7142699Z"",""message"":{""role"":""assistant"",""content"":"" el""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:11.9329101Z"",""message"":{""role"":""assistant"",""content"":"" siguiente""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:12.1640405Z"",""message"":{""role"":""assistant"",""content"":"":""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:12.3931118Z"",""message"":{""role"":""assistant"",""content"":""\n\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:12.6109364Z"",""message"":{""role"":""assistant"",""content"":""1""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:12.8372841Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:13.0828057Z"",""message"":{""role"":""assistant"",""content"":"" Email""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:13.3468405Z"",""message"":{""role"":""assistant"",""content"":""Personal""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:13.5836894Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:13.7761405Z"",""message"":{""role"":""assistant"",""content"":""2""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:13.9792557Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:14.1768372Z"",""message"":{""role"":""assistant"",""content"":"" Diario""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:14.3779106Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:14.6210323Z"",""message"":{""role"":""assistant"",""content"":""Ger""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:14.8209519Z"",""message"":{""role"":""assistant"",""content"":""ente""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:15.0248893Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:15.227066Z"",""message"":{""role"":""assistant"",""content"":""3""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:15.4581792Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:15.6690406Z"",""message"":{""role"":""assistant"",""content"":"" Acc""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:15.8781291Z"",""message"":{""role"":""assistant"",""content"":""ion""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:16.095755Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:16.3048262Z"",""message"":{""role"":""assistant"",""content"":""Personal""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:16.5370587Z"",""message"":{""role"":""assistant"",""content"":""\n""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:16.7291796Z"",""message"":{""role"":""assistant"",""content"":""4""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:16.9273576Z"",""message"":{""role"":""assistant"",""content"":"".""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:17.125286Z"",""message"":{""role"":""assistant"",""content"":"" Acc""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:17.3378906Z"",""message"":{""role"":""assistant"",""content"":""ion""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:17.5765609Z"",""message"":{""role"":""assistant"",""content"":""De""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:17.8081022Z"",""message"":{""role"":""assistant"",""content"":""Personal""},""done"":false}
+{""model"":""codegemma"",""created_at"":""2025-05-15T01:29:18.052524Z"",""message"":{""role"":""assistant"",""content"":""""},""done_reason"":""stop"",""done"":true,""total_duration"":26491790900,""load_duration"":10407407900,""prompt_eval_count"":71,""prompt_eval_duration"":7559212800,""eval_count"":38,""eval_duration"":8504170000}"
+2025-05-14T20:39:41,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+"
+2025-05-14T20:41:02,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+El orden cronológico de los documentos es el siguiente:
+
+1. DiarioDeGerente
+2. AccionDePersonal
+3. EmailPersonal
+4. AccionDePersonal
+5. DiarioDeGerente"
+2025-05-14T20:41:39,¿Cómo se llama la empresa y cuál es el perjuicio ocasionado?,"Grupo 5 🤖
+
+**Nombre de la empresa:** Patito EC
+
+**Perjuicio ocasionado:** $100,000"
+2025-05-14T20:47:33,¿Cómo se llama la empresa y cuál es el perjuicio ocasionado?,"Grupo 5 🤖
+
+La empresa es Patito EC y el perjuicio ocasionado fue de $100,000 por la caída del servicio web VentadePatos.com durante 4 horas, que afectan a 120 usuarios."
+2025-05-15T11:35:49,¿Cual es la capital de Ecuador?,Grupo 5 ⚠️ No se encontró información relevante en la base de datos.
+2025-05-15T11:41:31,¿Cómo se llama la empresa y cuál es el perjuicio ocasionado?,"Grupo 5 🤖
+
+La empresa se llama Patito EC y el perjuicio ocasionado fue una pérdida estimada de $100,000."
+2025-05-15T11:56:18,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+El orden cronológico de los documentos es:
+
+1. ReporteIncidentes
+2. ReporteIncidentes
+3. ReporteIncidentes
+4. ReporteIncidentes
+5. AccionDePersonal"
+2025-05-15T11:57:42,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+El orden cronológico de los documentos es:
+
+1. ReporteIncidentes
+2. ReporteIncidentes
+3. ReporteIncidentes
+4. ReporteIncidentes
+5. AccionDePersonal"
+2025-05-15T11:59:05,¿Cómo se llama la empresa y cuál es el perjuicio ocasionado?,"Grupo 5 🤖
+
+La empresa se llama Patito EC y el perjuicio ocasionado fue de aproximadamente $100,000."
+2025-05-15T12:03:11,"¿Qué tipo de problema fue, cuál fue la causa del incidente?","Grupo 5 🤖
+
+**Problema:** Caída del sitio web VentadePatos.com durante cuatro horas.
+
+**Causa:** Consumo inusualmente alto de memoria RAM en los servidores del sitio web, causado por un problema de sobrecarga en tres momentos específicos."
+2025-05-15T12:06:29,"¿Quiénes son los involucrados, se conoce el nombre de quien reporta el incidente?","Grupo 5 🤖
+
+El informe indica que los involucrados en el incidente son:
+
+* **Juanito Montero:** El encargado del monitoreo de servicios web que incurrió en la falla.
+* **Carlos Gómez:** Recursos Humanos que escribió la acción de personal.
+* **Sebastián Rivera:** Gerente que escribió una reflexión sobre el incidente.
+
+No se menciona el nombre de la persona que reporta el incidente."
+2025-05-15T12:09:50,¿Qué archivo describe las sanciones ocasionadas?,"Grupo 5 🤖
+
+El archivo que describe las sanciones ocasionadas es la **Accion de Personal en Contra de Juanito Montero Fecha: 7 de abril de 2025**."
+2025-05-15T12:13:09,¿Cuáles son los archivos que el agente tiene disponibles para proporcionar información?,Grupo 5 ⚠️ No se encontró información relevante en la base de datos.
+2025-05-15T12:15:09,¿Cuáles son los archivos disponibles para proporcionar información?,Grupo 5 ⚠️ No se encontró información relevante en la base de datos.
+2025-05-15T12:28:51,Quiero saber cuales son los archivos a los que tienes acceso para darme información de las incidencias,Grupo 5 ⚠️ No se encontró información relevante en la base de datos.
+2025-05-15T12:29:50,¿Cuáles son los archivos disponibles para el reporte de incidencias?,Grupo 5 ⚠️ No se encontró información relevante en la base de datos.
+2025-05-15T12:37:35,¿Cuáles son los archivos que el agente tiene disponibles para proporcionar información?,Grupo 5 ⚠️ No se encontró información relevante en la base de datos.
+2025-05-15T12:37:53,Lista los archivos,Grupo 5 ⚠️ No se encontró información relevante en la base de datos.
+2025-05-15T12:44:48,¿Cuál es el orden cronológico de los documentos?,"Grupo 5 🤖
+
+El orden cronológico de los documentos es:
+
+1. ReporteIncidentes
+2. ReporteIncidentes
+3. ReporteIncidentes
+4. AccionDePersonal
+5. AccionDePersonal"
+2025-05-15T12:46:42,"¿Qué tipo de problema fue, cuál fue la causa del incidente?","Grupo 5 🤖
+
+El problema fue la caída del sitio web VentadePatos.com durante un período de aproximadamente 4 horas, lo que impacta a 120 usuarios y causó una pérdida estimada de $100,000 para la empresa. La causa del incidente fue la falta de supervisión de Juanito Montero en el turno asignado, lo que resultó en su incapacidad para reaccionar ante el alto consumo de memoria RAM en los servidores durante tres picos críticos."

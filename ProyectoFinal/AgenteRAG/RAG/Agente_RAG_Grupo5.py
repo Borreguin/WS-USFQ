@@ -1,5 +1,6 @@
 import datetime
 import csv
+import json
 import os
 import requests
 from recuperar_chunks import obtener_chunks_desde_sql
@@ -22,7 +23,20 @@ def get_completion_sync(prompt: str, model: str) -> str:
             json={"model": model, "messages": [{"role": "user", "content": prompt}]}
         )
         response.raise_for_status()
-        return response.text
+        full_content = ""
+        for line in response.iter_lines():
+            if line:
+                try:
+                    # covert the line string to json
+                    json_data = json.loads(line)
+                    message = json_data.get("message", "")
+                    content = message.get("content", "")
+                    full_content += content
+                except Exception as e:
+                    print(f"Error processing chunk: {e}")
+
+        return full_content
+
     except Exception as e:
         return f"[ERROR] {e}"
 

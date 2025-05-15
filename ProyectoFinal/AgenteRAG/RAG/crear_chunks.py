@@ -3,7 +3,36 @@ from pathlib import Path
 import fitz  # PyMuPDF
 import re
 from typing import List, Dict
-from datetime import datetime
+import datetime
+import dateparser
+
+
+# Fecha de modificación del archivo
+def obtener_fecha_archivo(ruta_pdf: str) -> str:
+    stat = Path(ruta_pdf).stat()
+    fecha_mod = datetime.datetime.fromtimestamp(stat.st_mtime)
+    return fecha_mod.strftime("%Y-%m-%d")
+
+def extraer_fecha_desde_texto(texto: str) -> str:
+
+    patrones = [
+        r'fecha\s*[:\-–]\s*(\d{1,2}\s+de\s+\w+\s+de\s+\d{4})',  # Fecha: 7 de abril de 2025
+        r'fecha\s*del\s*incidente\s*[:\-–]\s*(\d{1,2}\s+de\s+\w+\s+de\s+\d{4})',
+        r'fecha\s*[:\-–]\s*(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})',  # Fecha: 12/03/2024
+        r'(\d{4}-\d{2}-\d{2})',  # ISO 2024-10-15
+    ]
+
+    for patron in patrones:
+        match = re.search(patron, texto, flags=re.IGNORECASE)
+        if match:
+            fecha_str = match.group(1).strip()
+            fecha = dateparser.parse(fecha_str, languages=['es'])
+            if fecha:
+                return fecha.strftime('%Y-%m-%d')
+            else:
+                print(f"No se pudo parsear '{fecha_str}'")
+    return None
+
 
 def extraer_texto_pdf(ruta_pdf: str) -> str:
     """
@@ -26,7 +55,7 @@ def limpiar_texto(texto: str) -> str:
     return texto
 
 
-def dividir_en_chunks(texto: str, max_palabras: int = 300) -> List[str]:
+def dividir_en_chunks(texto: str, max_palabras: int = 150) -> List[str]:
     """
     Divide el texto en chunks de máximo `max_palabras` palabras.
     """
@@ -37,16 +66,19 @@ def dividir_en_chunks(texto: str, max_palabras: int = 300) -> List[str]:
         chunks.append(chunk)
     return chunks
 
-def generar_chunks_con_metadata(ruta_pdf: str, max_palabras: int = 300) -> List[Dict]:
+def generar_chunks_con_metadata(ruta_pdf: str, max_palabras: int = 150) -> List[Dict]:
     """
     Procesa un PDF: extrae, limpia, divide en chunks y agrega metadatos.
     """
     texto = extraer_texto_pdf(ruta_pdf)
     texto_limpio = limpiar_texto(texto)
-    chunks = dividir_en_chunks(texto_limpio, max_palabras)
+    # Detectamos la fecha
+    fecha_extraida = extraer_fecha_desde_texto(texto_limpio)
+    fecha_archivo = obtener_fecha_archivo(ruta_pdf)
+    fecha_final = fecha_extraida or fecha_archivo
 
+    chunks = dividir_en_chunks(texto_limpio, max_palabras)
     nombre_archivo = Path(ruta_pdf).stem
-    fecha_procesamiento = datetime.now().strftime("%Y-%m-%d")
 
     resultado = []
     for i, chunk in enumerate(chunks):
@@ -54,16 +86,15 @@ def generar_chunks_con_metadata(ruta_pdf: str, max_palabras: int = 300) -> List[
             "documento": nombre_archivo,
             "chunk": chunk,
             "posicion": i,
-            "fecha": fecha_procesamiento
+            "fecha": fecha_final
         })
+
     return resultado
 
 # ========== PROCESAR TODOS LOS PDFs EN UNA CARPETA ==========
 
 def procesar_directorio_pdf(ruta_directorio: str) -> List[Dict]:
-    """
-    Recorre todos los PDFs en el directorio y genera los chunks con metadatos.
-    """
+
     resultados = []
     for archivo in os.listdir(ruta_directorio):
         if archivo.endswith(".pdf"):
