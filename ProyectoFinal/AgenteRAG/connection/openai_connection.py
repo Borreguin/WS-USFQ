@@ -32,6 +32,9 @@
 
 # if __name__ == "__main__":
 #     main()
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import asyncio
 import pickle
@@ -47,7 +50,6 @@ from openai import AsyncOpenAI
 client = AsyncOpenAI(
   api_key=api_key,
 )
-
 
 async def get_completion(prompt: str) -> str:
     """Calls the AsyncOpenAI client and returns the completion."""
