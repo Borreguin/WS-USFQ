@@ -1,9 +1,6 @@
 import asyncio
-import os
 
-# Leer la API key desde el archivo keys.txt
-with open(os.path.join(os.path.dirname(__file__), 'keys'), 'r') as f:
-    api_key = f.read().strip()
+api_key = "sk-proj-"
 model = "gpt-3.5-turbo"
 
 from openai import AsyncOpenAI
