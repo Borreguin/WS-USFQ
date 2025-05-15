@@ -4,6 +4,7 @@ import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import httpx
+import re
 
 import sys
 import os
@@ -15,32 +16,31 @@ from keyandcontext import KeyAndContext  # Si ya lo estás usando
 
 
 # Configuración de Ollama
-OLLAMA_URL = "http://localhost:11434/api/chat"
+OLLAMA_URL = "http://localhost:11434/api/generate"
 model_to_use = "llama3.2"  # O el modelo que prefieras
 
-# Llamada a Ollama
 async def get_completion(prompt: str, model: str) -> str:
     try:
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(timeout=120.0) as client:  # Aumenté el timeout
             response = await client.post(
                 OLLAMA_URL,
-                json={"model": model, "messages": [{"role": "user", "content": prompt}]}
+                json={
+                    "model": model,
+                    "prompt": prompt,
+                    "stream": False  # Importante para recibir respuesta completa
+                },
+                headers={"Content-Type": "application/json"}
             )
             response.raise_for_status()
-            full_content = ""
-            for line in response.iter_lines():
-                if line:
-                    try:
-                        json_data = json.loads(line)
-                        message = json_data.get("message", {})
-                        content = message.get("content", "")
-                        full_content += content
-                    except Exception as e:
-                        print(f"Error processing chunk: {e}")
-            return full_content
+            result = response.json()
+            return result.get("response", "").strip()
+    except httpx.ConnectError:
+        print("Error: No se puede conectar al servidor Ollama. ¿Está corriendo?")
+        return "Error: Servidor Ollama no disponible."
     except Exception as e:
-        print(f"Error occurred: {e}")
+        print(f"Error detallado: {str(e)}")
         return "Error: no se pudo obtener respuesta del modelo."
+
 
 def test():
     promptDisponible = "Estas disponible?"
@@ -102,7 +102,7 @@ def filtrar_por_jaccard(pregunta, dataset, umbral=0.05):
     return resultados
 
 # Usar Ollama para responder una pregunta sobre el dataset
-async def preguntar_al_agente(pregunta: str, dataset: dict, metodo: str = "tfidf"):
+async def preguntar_al_agente(pregunta: str, dataset: dict, metodo: str = "jaccard"):
     # Selección dinámica del método
     if metodo == "tfidf":
         print("🔍 Filtrando con TF-IDF...")
@@ -118,38 +118,57 @@ async def preguntar_al_agente(pregunta: str, dataset: dict, metodo: str = "tfidf
         print("⚠No se encontraron documentos relevantes, usando todo el dataset.")
         dataset_filtrado = dataset
 
-    contexto = "\n\n".join([f"{nombre}:\n{info['contenido']}" for nombre, info in dataset.items()])
+    contexto = "\n\n".join([f"{nombre}:\n{info['contenido']}" for nombre, info in dataset_filtrado.items()])
     prompt = f"""
-Responde solo con base en los siguientes documentos:
-
-{contexto}
-
-Pregunta:
-{pregunta}
-"""
+    Responde solo con base en los siguientes documentos:
+        
+    {contexto}
+        
+    Pregunta:
+    {pregunta}
+        """
     respuesta = await get_completion(prompt, model_to_use)
-    print(respuesta)
+    #print(respuesta)
     return respuesta
     # return await get_completion(prompt, model_to_use)
 
 
 
 # Ejecución principal
-def main():
-    # Paso 1: Construir dataset desde contenido PDF
-    dataset = construir_dataset_enriquecido(contenido)
+# def main():
+#     # Paso 1: Construir dataset desde contenido PDF
+#     dataset = construir_dataset_enriquecido(contenido)
+#
+#     # Paso 2: Guardarlo si deseas conservarlo para otros scripts
+#     guardar_dataset_json(dataset)
+#
+#     # Paso 3: Ejemplo de pregunta al agente
+#     pregunta = "¿Cuál es el orden cronológico de los documentos?"
+#     metodo = "jaccard"  # Poner "jaccard" para probar otro algoritmo
+#
+#     # Paso 4: Ejecutar consulta
+#     respuesta = asyncio.run(preguntar_al_agente(pregunta, dataset, metodo))
+#     print(f"\n Pregunta: {pregunta}\n Respuesta:\n{respuesta}")
 
-    # Paso 2: Guardarlo si deseas conservarlo para otros scripts
+def main():
+    # Construir dataset
+    dataset = construir_dataset_enriquecido(contenido)
     guardar_dataset_json(dataset)
 
-    # Paso 3: Ejemplo de pregunta al agente
-    pregunta = "¿Cuál es el orden cronológico de los documentos?"
-    metodo = "tfidf"  # Poner "jaccard" para probar otro algoritmo
+    # Lista de preguntas a evaluar
+    preguntas = [
+        "¿Cómo se llama la empresa y cuál es el perjuicio ocasionado?",
+        "¿Qué tipo de problema fue, cuál fue la causa del incidente?",
+        "¿Quiénes son los involucrados, se conoce el nombre de quien reporta el incidente?",
+        "¿Qué archivo describe las sanciones ocasionadas?",
+        "¿Cuáles son los documentos más relevantes sobre este caso?"
+    ]
 
-    # Paso 4: Ejecutar consulta
-    respuesta = asyncio.run(preguntar_al_agente(pregunta, dataset, metodo))
-    print(f"\n Pregunta: {pregunta}\n Respuesta:\n{respuesta}")
-
+    for i, pregunta in enumerate(preguntas, 1):
+        print(f"\n🔵 Pregunta {i}: {pregunta}")
+        respuesta = asyncio.run(preguntar_al_agente(pregunta, dataset, "jaccard"))
+        print(f"🟢 Respuesta:\n{respuesta}\n")
+        print("─" * 80)  # Separador visual
 
 if __name__ == "__main__":
     main()
