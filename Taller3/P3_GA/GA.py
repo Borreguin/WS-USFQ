@@ -21,6 +21,9 @@ class GA:
     def set_new_generation_type(self, _type):
         self.new_generation_type = _type
 
+    def set_parent_selection_type(self, _type: ParentSelectionType):
+        self.parent_selection_type = _type
+
     def run(self):
         success = False
         for _ in range(self.n_iterations):
@@ -74,7 +77,7 @@ def case_study_3(_objetive):
     ga.run()
 
 def case_study_4(_objetive):
-    population = generate_population(400, len(_objetive))
+    population = generate_population(140, len(_objetive))
     mutation_rate = 0.01
     n_iterations = 1000
     ga = GA(population, _objetive, mutation_rate, n_iterations)
@@ -83,10 +86,33 @@ def case_study_4(_objetive):
     ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
     ga.run()
 
+def case_study_5(_objetive):  # diferencia de padres con selección elitista
+    population = generate_population(100, len(_objetive))
+    mutation_rate = 0.01
+    n_iterations = 1000
+    ga = GA(population, _objetive, mutation_rate, n_iterations)
+    ga.set_evaluation_type(AptitudeType.BY_DISTANCE)
+    ga.set_best_individual_selection_type(BestIndividualSelectionType.MIN_DISTANCE)
+    ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
+    ga.set_parent_selection_type(ParentSelectionType.NEW) 
+    ga.run()
+
+def case_study_6(_objetive):  # modelo aplicando los mejor de case study 3, 4 y 5
+    population = generate_population(140, len(_objetive))
+    mutation_rate = 0.05
+    n_iterations = 1000
+    ga = GA(population, _objetive, mutation_rate, n_iterations)
+    ga.set_evaluation_type(AptitudeType.BY_DISTANCE)
+    ga.set_best_individual_selection_type(BestIndividualSelectionType.MIN_DISTANCE)
+    ga.set_new_generation_type(NewGenerationType.MIN_DISTANCE)
+    ga.set_parent_selection_type(ParentSelectionType.NEW) 
+    ga.run()
 
 if __name__ == "__main__":
     objective = "GA Workshop! USFQ"
     #case_study_1(objective)
     #case_study_2(objective)
     #case_study_3(objective)
-    case_study_4(objective)
+    #case_study_4(objective)
+    #case_study_5(objective)
+    case_study_6(objective)

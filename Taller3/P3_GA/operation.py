@@ -19,9 +19,10 @@ def parent_selection(_type: ParentSelectionType, population, aptitudes):
         return parent1, parent2
 
     if _type == ParentSelectionType.NEW:
-        print("implement here the new parent selection")
-        return None
-
+        # Selección elitista: elegir los 2 mejores individuos con mejor aptitud
+        top_two = sorted(zip(population, aptitudes), key=lambda x: x[1])[:2]
+        parent1, parent2 = top_two[0][0], top_two[1][0]
+        return parent1, parent2
 
 def crossover(_type: CrossoverType, parent1, parent2):
     if _type == CrossoverType.DEFAULT:
