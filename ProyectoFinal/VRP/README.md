@@ -27,7 +27,7 @@ El repositorio provee un dataset estructurado de la siguiente manera:
 
 ### Small VRP
 
-Contiene una lista con las coordenadas y la demanda de 11 clientes ubicados en un plano xy. También contiene 3 archivos para cada uno de los casos a resolver, estos contienen la capacidad de cada uno de los vehículos que se utilizaran para repartir en ese caso particular.
+Contiene una lista con las coordenadas y la demanda de 11 clientes ubicados en un plano xy. También contiene 3 archivos para cada uno de los casos a resolver. Estos indican la capacidad de cada uno de los vehículos que se utilizaran para repartir en ese caso particular.
 
 ### Medium VRP
 
